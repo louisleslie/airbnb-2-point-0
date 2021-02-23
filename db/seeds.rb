@@ -39,8 +39,10 @@ users.each do |user|
     prop = property_types.keys.sample
     bedrooms = property_types[prop][:bedrooms].sample
     bathrooms = (1..bedrooms-1).to_a.sample
+    name = "A #{prop} with a view of #{Faker::Mountain}"
     price = (bedrooms * (24..50).to_a.sample) - 0.01
     prop = Property.create(user_id: u.id,
+                name: name,
                 property_type: prop, 
                 total_occupancy: bedrooms*2, 
                 total_bedrooms: bedrooms,
