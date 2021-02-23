@@ -12,7 +12,7 @@ User.destroy_all
 
 # Create user profile for each of us with default pw of 'password'.
 # Please amend your email if first_name.last_name@gmail.com is going to be hard to remember!
-users = ['alexterenda@gmail.com', 'jake.howlett@gmail.com', 'louis.leslie@gmail.com', 'yunus.firat@gmail.com']
+users = ['alex.terenda@gmail.com', 'jake.howlett@gmail.com', 'louis.leslie@gmail.com', 'yunus.firat@gmail.com']
 
 # add 6 random users to have 10 users to add
 6.times do
@@ -31,7 +31,7 @@ Faker::Config.locale = 'en-GB'
 
 users.each do |user|
   name = user.split("@")[0].split(".")
-  u = User.new(first_name: name[0].capitalize, last_name: name[1].capitalize, email: user, password: "password", password_confirmation: "password")
+  u = User.create(first_name: name[0].capitalize, last_name: name[1].capitalize, email: user, password: "password", password_confirmation: "password")
   # Assign each User a random number of properties to create as a host.
   num_of_flats = (0..3).to_a.sample
   puts "Creating #{num_of_flats} properties for #{u.email}"
