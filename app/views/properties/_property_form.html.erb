@@ -1,0 +1,17 @@
+<%= simple_form_for [ @property ] do |f| %>
+  <%= f.input :name, input_html: { maxlength: 255 } %>
+  <%= f.input :summary, input_html: { maxlength: 255 } %>
+  <%= f.input :address, input_html: { maxlength: 255 } %>
+  <%= f.input :property_type, input_html: { maxlength: 255 } %>
+  <%= f.input :price_per_night, as: :numeric %>
+  <%= f.input :total_occupancy, as: :numeric %>
+  <%= f.input :total_bedrooms, as: :numeric %>
+  <%= f.input :total_bathrooms, as: :numeric %>
+  <%= f.input :has_tv, as: :radio_buttons %>
+  <%= f.input :has_kitchen %>
+  <%= f.input :has_aircon %>
+  <%= f.input :has_heating %>
+  <%= f.input :has_internet %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
