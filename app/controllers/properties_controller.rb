@@ -1,6 +1,12 @@
 class PropertiesController < ApplicationController
   before_action :set_property
 
+  def show
+  end
+
+  def new
+  end
+
   def index
     @properties = Property.all
   end
