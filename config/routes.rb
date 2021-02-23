@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'bookings/show'
+  get 'bookings/edit'
+  get 'bookings/index'
   resources :properties
   resources :bookings
   devise_for :users
