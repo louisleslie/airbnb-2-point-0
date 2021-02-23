@@ -1,6 +1,8 @@
 
 <div class="container">
-  <h1><%= @property %></h1>
-  <p>Find me in app/views/properties/show.html.erb</p>
+  <h1><%= "#{@property.property_type} in #{@property.address}"%></h1>
+  <h3>£<%= @property.price_per_night.round(2) %></h3>
+  <p><%= @property.summary %></p>
+
 </div>
 
