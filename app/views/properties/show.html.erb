@@ -1,8 +1,23 @@
 
 <div class="container">
   <h1><%= "#{@property.property_type} in #{@property.address}"%></h1>
-  <h3>£<%= @property.price_per_night.round(2) %></h3>
-  <p><%= @property.summary %></p>
-
+  <div class="owner-controls">
+    <% if session["warden.user.user.key"][0][0] == @property.user_id %>
+      <%= link_to "Edit", edit_property_path(@property), class: "btn btn-success" %>
+      <%= link_to "Delete", property_path(@property), method: "delete", class: "btn btn-danger", data: { confirm: "Remove This Property?" }%>
+    <% end %>
+  <div>
+  <div class="image-carousel" style="height: 50vh; background-color: white;">
+    <h2>Pictures go here</h2>
+  </div>
+  <div class="d-flex flex-wrap align-content-start">
+    <div class="property-details" style="height: 50vh; background-color: white;">
+      <h3><strong>£<%= @property.price_per_night.round(2) %></strong> / night</h3>
+      <p><%= @property.summary %></p>
+    </div>
+    <div class="booking-form" style="height: 50vh; background-color: white;">
+      <h2>Booking Form</h2>
+    </div>
+  </div>
 </div>
 

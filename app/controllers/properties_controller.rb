@@ -1,4 +1,8 @@
 class PropertiesController < ApplicationController
+  
+  def index
+  end
+
   def new
   end
 
@@ -6,6 +10,10 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
   end
 
-  def index
+  def destroy
+    @property = Property.find(params[:id])
+    @property.destroy
+    redirect_to :index
   end
+
 end
