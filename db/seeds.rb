@@ -31,7 +31,7 @@ Faker::Config.locale = 'en-GB'
 
 users.each do |user|
   name = user.split("@")[0].split(".")
-  u = User.new(first_name: name[0].capitalize, last_name: name[1].capitalize, email: user, password: "password", password_confirmation: "password")
+  u = User.create(first_name: name[0].capitalize, last_name: name[1].capitalize, email: user, password: "password", password_confirmation: "password")
   # Assign each User a random number of properties to create as a host.
   num_of_flats = (0..3).to_a.sample
   puts "Creating #{num_of_flats} properties for #{u.email}"
