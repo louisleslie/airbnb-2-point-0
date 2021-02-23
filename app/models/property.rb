@@ -6,6 +6,6 @@ class Property < ApplicationRecord
   validates :property_type, presence: true
   validates :total_occupancy, presence: true, numericality: { only_integer: true }
   validates :summary, presence: true
-  validates :price_per_night, presence: true, numericality: { only_integer: true }
+  validates :price_per_night, presence: true, numericality: { only_float: true }
   validates :address, presence: true
 end
