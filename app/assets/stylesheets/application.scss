@@ -8,6 +8,10 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+// Internal variables
+
+@import "config/_sass_variables.scss";
+
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
