@@ -1,5 +1,6 @@
 class Property < ApplicationRecord
   belongs_to :user
+  has_many_attached :photos
   validates :name, presence: true
   validates :property_type, presence: true
   validates :total_occupancy, presence: true, numericality: { only_integer: true }

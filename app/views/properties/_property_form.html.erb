@@ -12,6 +12,6 @@
   <%= f.input :has_aircon %>
   <%= f.input :has_heating %>
   <%= f.input :has_internet %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
