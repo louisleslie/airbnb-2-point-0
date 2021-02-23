@@ -24,7 +24,12 @@ class PropertiesController < ApplicationController
     @property.destroy
     redirect_to :index
   end
-    
+
+  def users_index
+    @properties = current_user.properties
+    redirect_to user_index(@properties)
+  end
+
   def index
     @properties = Property.all
   end
