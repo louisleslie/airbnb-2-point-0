@@ -1,9 +1,14 @@
 class PropertiesController < ApplicationController
-  before_action :set_property
+  before_action :set_property, only: [:show, :edit, :destroy] 
 
   def show
   end
 
+  def destroy
+    @property.destroy
+    redirect_to :index
+  end
+    
   def new
   end
 
