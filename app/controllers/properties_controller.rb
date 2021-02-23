@@ -1,10 +1,15 @@
 class PropertiesController < ApplicationController
-  before_action :set_property
+  before_action :set_property, only: [:show, :edit, :destroy]
 
   def show
   end
 
   def new
+  end
+
+  def users_index
+    @properties = current_user.properties
+    redirect_to user_index(@properties)
   end
 
   def index
