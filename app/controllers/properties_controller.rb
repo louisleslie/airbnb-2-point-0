@@ -26,6 +26,6 @@ class PropertiesController < ApplicationController
   end
 
   def property_params
-    params.require(:property).permit(:longitude, :address, :latitude, :has_internet, :has_heating, :has_aircon, :has_kitchen, :has_tv, :price_per_night, :summary, :total_bathrooms, :total_bedrooms, :total_occupancy, :property_type)
+    params.require(:property).permit(:longitude, :address, :latitude, :has_internet, :has_heating, :has_aircon, :has_kitchen, :has_tv, :price_per_night, :summary, :total_bathrooms, :total_bedrooms, :total_occupancy, :property_type, :name)
   end
 end
