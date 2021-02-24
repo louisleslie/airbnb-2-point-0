@@ -35,11 +35,8 @@ class BookingsController < ApplicationController
   end
 
   def destroy # Yunus
-<<<<<<< HEAD
     @booking.destroy
     redirect_to :index
-=======
->>>>>>> master
   end
 
   private
@@ -48,14 +45,8 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
-<<<<<<< HEAD
-  def property_params
-    params.require(:property).permit(:start_date, :end_date, :total_cost, :price_per_night, :number_of_guests, :status)
-=======
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :total_cost, :price_per_night, :number_of_guests,
                                     :status)
-
->>>>>>> master
   end
 end
