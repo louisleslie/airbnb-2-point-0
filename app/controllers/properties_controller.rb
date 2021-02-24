@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
-  before_action :set_property, only: [:show, :edit, :destroy]
-
+  before_action :set_property, only: [:show, :edit, :update, :destroy] 
+  
   def new
     @property = Property.new
   end
@@ -9,13 +9,11 @@ class PropertiesController < ApplicationController
     @property = Property.new(property_params)
     @property.name = @property.name.capitalize
     @property.user = current_user
-    raise
-    @property.save # TODO swap for if statment when show page is made
-    # if @property.save
-    #   redirect_to property_path(@property)
-    # else
-    #   render :new
-    # end
+    if @property.save
+      redirect_to property_path(@property)
+    else
+      render :new
+    end
   end
   def show
     @booking = Booking.new
@@ -23,7 +21,7 @@ class PropertiesController < ApplicationController
 
   def destroy
     @property.destroy
-    redirect_to :index
+    redirect_to properties_path
   end
 
   def users_index

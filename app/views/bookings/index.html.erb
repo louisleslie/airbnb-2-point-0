@@ -1,2 +1,9 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<div class="container">
+  <h1>Bookings</h1>
+  <% @bookings.each do |booking| %>
+    <%= link_to booking.property.name , booking_path(booking) %>
+    <p><%= booking.start_date %> - <%= booking.end_date %></p>
+    <p><%= booking.property.address %></p>
+    <p><%= booking.property.summary %></p>
+  <% end %>
+</div>
