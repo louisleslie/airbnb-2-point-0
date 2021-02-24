@@ -15,11 +15,11 @@
       <h3><strong>£<%= @property.price_per_night.round(2) %></strong> / night</h3>
       <p><%= @property.summary %></p>
       <p><%= @property.address %></p>
-      <ul>
-        <li <%= @property.has_kitchen ? "" : 'style="color: grey;"' %>><%= @property.has_kitchen ? ':) has Kitchen' : ':( has Kitchen' %></li>
-        <li <%= @property.has_internet ? "" : 'style="color: grey;"' %>><%= @property.has_internet ? ":) has Internet" : ":( has Internet" %></li>
-        <li <%= @property.has_aircon ? "" : 'style="color: grey;"' %>><%= @property.has_aircon ? ":) has Air Con" : ":( has Air Con" %></li>
-        <li  <%= @property.has_heating ? "" : 'style="color: grey;"' %>><%= @property.has_heating ? ":) has Heating" : ":( has Heating" %></li>
+      <ul class="property-feature-list">
+        <li <%= @property.has_kitchen ? "" : 'style=color:grey;' %>><%= @property.has_kitchen ? ':) has Kitchen' : ':( has Kitchen' %></li>
+        <li <%= @property.has_internet ? "" : 'style=color:grey;' %>><%= @property.has_internet ? ":) has Internet" : ":( has Internet" %></li>
+        <li <%= @property.has_aircon ? "" : 'style=color:grey;' %>><%= @property.has_aircon ? ":) has Air Con" : ":( has Air Con" %></li>
+        <li  <%= @property.has_heating ? "" : 'style=color:grey;' %>><%= @property.has_heating ? ":) has Heating" : ":( has Heating" %></li>
       </ul>
     </div>
     <div class="booking-form" style="height: 50vh; background-color: white;">
