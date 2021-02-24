@@ -33,11 +33,12 @@ class PropertiesController < ApplicationController
   def index
     @properties = Property.all
 
-        @markers = @properties.geocoded.map do |property|
+    @markers = @properties.geocoded.map do |property|
       {
         lat: property.latitude,
         lng: property.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { property: property })
+        infoWindow: render_to_string(partial: "info_window", locals: { property: property }),
+        image_url: helpers.asset_path("map-pin.svg")
       }
     end
   end
@@ -58,7 +59,7 @@ class PropertiesController < ApplicationController
 
   def property_params
     params.require(:property).permit(:name, :property_type, :total_occupancy, :total_bedrooms, :total_bathrooms,
-                                     :summary, :price_per_night, :has_tv, :has_kitchen, :has_aircon,
-                                     :has_heating, :has_internet, :address, photos: [])
+     :summary, :price_per_night, :has_tv, :has_kitchen, :has_aircon,
+     :has_heating, :has_internet, :address, photos: [])
   end
 end
