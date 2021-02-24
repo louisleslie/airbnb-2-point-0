@@ -9,13 +9,11 @@ class PropertiesController < ApplicationController
     @property = Property.new(property_params)
     @property.name = @property.name.capitalize
     @property.user = current_user
-    raise
-    @property.save # TODO swap for if statment when show page is made
-    # if @property.save
-    #   redirect_to property_path(@property)
-    # else
-    #   render :new
-    # end
+    if @property.save
+      redirect_to property_path(@property)
+    else
+      render :new
+    end
   end
   def show
     @booking = Booking.new
