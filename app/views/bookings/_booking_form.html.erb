@@ -1,0 +1,10 @@
+<%= simple_form_for [@property, @booking] do |f| %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.input :number_of_guests, collection: 1..@property.total_occupancy %>
+  <% if @property.user == current_user %>
+    <%= f.input :status, collection: [ "Accept", "Decline", "Pending"]%>
+  <% end %>
+  <p><strong>Total:</strong> £<%= @property.price_per_night %><p>
+  <%= f.submit label: "Book!", class: "btn btn-primary" %>
+<% end %>
