@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
-  before_action :set_property, only: [:show, :edit, :destroy] 
-  
+  before_action :set_property, only: [:show, :edit, :destroy]
+
   def new
     @property = Property.new
   end
@@ -32,6 +32,13 @@ class PropertiesController < ApplicationController
 
   def index
     @properties = Property.all
+
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   def edit
@@ -47,10 +54,10 @@ class PropertiesController < ApplicationController
   def set_property
     @property = Property.find(params[:id])
   end
-  
+
   def property_params
     params.require(:property).permit(:name, :property_type, :total_occupancy, :total_bedrooms, :total_bathrooms,
-                                     :summary, :price_per_night, :has_tv, :has_kitchen, :has_aircon,
-                                     :has_heating, :has_internet, :address, photos: [])
+     :summary, :price_per_night, :has_tv, :has_kitchen, :has_aircon,
+     :has_heating, :has_internet, :address, photos: [])
   end
 end
