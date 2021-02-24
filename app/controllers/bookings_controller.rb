@@ -9,8 +9,13 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.property_id = params[:property_id]
-    @booking.save
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      render properties_path(params[:property_id])
+    end
   end
+
 
   def show # Yunus
   end
@@ -40,19 +45,3 @@ class BookingsController < ApplicationController
                                     :status)
   end
 end
-
-
-# def new # Louis
-#     @booking = Booking.new
-#   end
-
-#   def create # Louis
-#     @booking = Booking.new(booking_params)
-#     @booking.user = current_user
-#     @booking.property_id = params[:property_id]
-#     if @booking.save
-#       redirect_to booking_path(@booking)
-#     else
-#       render properties_path(params[:property_id])
-#     end
-#   end
