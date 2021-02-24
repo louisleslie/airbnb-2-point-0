@@ -1,0 +1,18 @@
+.form-container {
+  font-family: $body-font;
+  color: $black;
+
+  .btn-primary {
+    background-color: $pink;
+    border: 1px solid $dark-pink;
+  }
+
+  .btn-primary:hover {
+    background-color: $dark-pink;
+  }
+}
+
+#property-form {
+  max-width: 700px;
+  margin: 0 auto;
+}

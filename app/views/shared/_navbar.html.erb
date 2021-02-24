@@ -26,7 +26,7 @@
 
         <% if current_user.properties %>
           <li class="nav-item">
-            <%= link_to "Your properties", user_properties_path(current_user), class: "nav-link" %>
+            <%= link_to "Your properties", "/users/:user_id/properties", class: "nav-link" %>
           </li>
         <% end %>
 
