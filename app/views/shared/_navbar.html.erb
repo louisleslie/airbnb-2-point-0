@@ -15,6 +15,17 @@
       <li class="nav-item">
         <%= link_to "Places to stay", properties_path, class: "nav-link" %>
       </li>
+
+
+      <% if current_user.bookings %>
+
+      <li class="nav-item">
+        <%= link_to "Your bookings", bookings_path, class: "nav-link" %>
+      </li>
+
+      <% end %>
+
+
       <li class="nav-item">
         <%= link_to "Host a Home", new_property_path, class: "nav-link" %>
       </li>
