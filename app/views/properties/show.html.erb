@@ -1,5 +1,6 @@
 
 <div class="container">
+  <%= link_to "Back to Properties", properties_path %>
   <h1><%= "#{@property.name}"%></h1>
   <div class="owner-controls">
     <% if session["warden.user.user.key"][0][0] == @property.user_id %>
@@ -22,10 +23,12 @@
         <li  <%= @property.has_heating ? "" : 'style=color:grey;' %>><%= @property.has_heating ? ":) has Heating" : ":( has Heating" %></li>
       </ul>
     </div>
-    <div class="booking-form" style="height: 50vh; background-color: white;">
-      <h2>Booking Form</h2>
-      <%= render "bookings/booking_form", property: @property, booking: @booking %>
-    </div>
+    <% unless session["warden.user.user.key"][0][0] == @property.user_id %>
+      <div class="booking-form" style="height: 50vh; background-color: white;">
+        <h2>Booking Form</h2>
+        <%= render "bookings/booking_form", property: @property, booking: @booking %>
+      </div>
+    <% end %>
   </div>
 </div>
 
