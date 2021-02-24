@@ -22,9 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
-
-# gem for protecting secret keys
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'geocoder'
 
 # gem for external image hosting
 gem 'cloudinary', '~> 1.16.0'
@@ -43,6 +41,7 @@ gem 'faker'
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
+  # gem for protecting secret keys
   gem 'dotenv-rails'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
