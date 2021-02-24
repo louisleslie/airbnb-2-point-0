@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
-  before_action :set_property, only: [:show, :edit, :update, :destroy] 
-  
+  before_action :set_property, only: [:show, :edit, :update, :destroy]
+
   def new
     @property = Property.new
   end
@@ -15,6 +15,7 @@ class PropertiesController < ApplicationController
       render :new
     end
   end
+
   def show
     @booking = Booking.new
   end
@@ -45,8 +46,11 @@ class PropertiesController < ApplicationController
   end
 
   def update
-    @property.update(property_params)
-    redirect_to property_path(@property)
+    if @property.update(property_params)
+      redirect_to property_path(@property)
+    else
+      render :edit
+    end
   end
 
   private
