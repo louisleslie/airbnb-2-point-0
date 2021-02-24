@@ -68,7 +68,7 @@ users.each do |user|
   num_of_flats.times do
     prop = property_types.keys.sample
     bedrooms = property_types[prop][:bedrooms].sample
-    bathrooms = (1..bedrooms-1).to_a.sample
+    bathrooms = (1..bedrooms).to_a.sample
     name = "A #{prop} with a view of #{Faker::Mountain.name}"
     price = (bedrooms * (24..50).to_a.sample) - 0.01
     prop = Property.create(user_id: u.id,
@@ -78,7 +78,7 @@ users.each do |user|
                 total_bedrooms: bedrooms,
                 total_bathrooms: bathrooms,
                 price_per_night: price,
-                summary: Faker::Hipster.paragraph,
+                summary: Faker::Hipster.sentences(number: 2).join("  "),
                 has_kitchen: rand.round(0),
                 has_tv: rand.round(0),
                 has_heating: rand.round(0),
@@ -90,4 +90,7 @@ users.each do |user|
   end
 end
 
+20.times do
+
+end
 
