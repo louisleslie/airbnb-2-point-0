@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.property_id = params[:property_id]
+    @booking.status = "Pending"
     @property = Property.find(params[:property_id])
     if @booking.save
       redirect_to booking_path(@booking)
