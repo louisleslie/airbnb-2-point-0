@@ -1,4 +1,4 @@
-<div class="container form-container">
+<div class="container form-container" id="property-form">
   <%= simple_form_for [ @property ] do |f| %>
     <%= f.input :name, input_html: { maxlength: 255 } %>
     <%= f.input :summary, input_html: { maxlength: 255 } %>
@@ -8,11 +8,11 @@
     <%= f.input :total_occupancy, as: :numeric %>
     <%= f.input :total_bedrooms, as: :numeric %>
     <%= f.input :total_bathrooms, as: :numeric %>
-    <%= f.input :has_tv%>
-    <%= f.input :has_kitchen %>
-    <%= f.input :has_aircon %>
-    <%= f.input :has_heating %>
-    <%= f.input :has_internet %>
+    <%= f.input :has_tv, label: "TV" %>
+    <%= f.input :has_kitchen, label: "Kitchen" %>
+    <%= f.input :has_aircon, label: "Aircon" %>
+    <%= f.input :has_heating, label: "Heating" %>
+    <%= f.input :has_internet, label: "Wifi" %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
