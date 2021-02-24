@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_action :set_property, only: [:show, :edit, :destroy] 
+  before_action :set_property, only: [:show, :edit, :update, :destroy] 
   
   def new
     @property = Property.new
@@ -21,7 +21,7 @@ class PropertiesController < ApplicationController
 
   def destroy
     @property.destroy
-    redirect_to :index
+    redirect_to properties_path
   end
 
   def users_index

@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
 
   def destroy # Yunus
     @booking.destroy
-    redirect_to :index
+    redirect_to bookings_path
   end
 
   private
