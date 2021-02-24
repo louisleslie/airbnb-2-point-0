@@ -2,7 +2,7 @@ class Property < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
   has_many_attached :photos, dependent: :destroy
-  # geocoded_by :address
+  geocoded_by :address
   validates :name, presence: true
   validates :property_type, presence: true
   validates :total_occupancy, presence: true, numericality: { only_integer: true }

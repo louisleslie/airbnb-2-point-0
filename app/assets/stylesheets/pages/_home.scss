@@ -1,21 +1,26 @@
 // Specific CSS for your home-page
 .header-section {
-  background-image: url("https://a0.muscache.com/im/pictures/1fe846d6-f32b-4928-8016-035964af42fa.jpg?im_w=1440");
+  background-image: url("https://a0.muscache.com/im/pictures/f0483d09-7d13-42d0-a40a-46d585c42220.jpg?im_w=1920");
   background-position: center bottom;
   width: 100%;
   height: 80vh;
-  object-fit: cover;
+  object-fit: fill;
+}
+
+.header-container {
+  width: 100%
 }
 
 .header-title {
   color: white;
   font-weight: 600;
-  font-size: 56px;
+  font-size: 54px;
 }
 
 .header-paragraph {
   color: white;
   font-size: 24px;
+  font-weight: 600px;
 }
 
 .header-button {
