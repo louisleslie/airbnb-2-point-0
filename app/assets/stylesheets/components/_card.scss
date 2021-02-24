@@ -1,0 +1,55 @@
+.card-container {
+  display: flex;
+  background-color: white;
+  margin-top: 16px;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.card-image-container {
+  width: 40%;
+  padding: 8px;
+}
+
+.card-image {
+  border-radius: 8px;
+}
+
+.card-contents {
+  padding: 8px;
+  width: 60%;
+}
+
+.card-badges {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: $dark-grey;
+  font-weight: 500;
+  padding-left: 12px;
+}
+
+.card-badge {
+  color: $pink;
+  background-color: #FFE4E6;
+  border-radius: 9999px;
+  padding: 2px 8px;
+  margin-right: 12px;
+}
+
+.card-supertitle {
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  color: $dark-grey;
+}
+
+.card-paragraph {
+
+}
