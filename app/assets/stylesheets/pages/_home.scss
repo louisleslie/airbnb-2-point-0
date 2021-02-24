@@ -18,6 +18,32 @@
   font-size: 24px;
 }
 
+.header-button {
+  display: inline-block;
+  color: white;
+  background-color: $pink;
+  border: none;
+  margin-top: 12px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all .2s ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $dark-pink;
+    transform: scale(1.05);
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.search-icon {
+  display: inline-block;
+  padding-right: 8px;
+}
+
 .location-card {
   display: flex;
   flex-direction: row;
@@ -62,11 +88,4 @@
   background: $dark-grey;
   object-fit: cover;
   color: #eceeef;
-}
-
-.footer-paragraph {
-  color: $black;
-  font-size: 14px;
-  padding: 16px;
-  padding-top: 24px;
 }
