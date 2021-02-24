@@ -8,27 +8,28 @@
       <%= link_to "Delete", property_path(@property), method: "delete", class: "btn btn-danger", data: { confirm: "Remove This Property?" }%>
     <% end %>
   <div>
-  <div class="image-carousel" style="height: 50vh; background-color: white;">
-    <h2>Pictures go here</h2>
+  <div class="container" style="height: 75vh; background-color: white;">
+    <img src="https://a0.muscache.com/im/pictures/f7388724-65a9-4ad8-9b88-9708421224a0.jpg?im_w=720" alt="" class="whatever">
   </div>
-  <div class="d-flex flex-wrap align-content-start">
-    <div class="property-details" style="background-color: white;">
+  <div class="d-flex flex-wrap justify-content-between">
+    <div class="property-details" style="width: 50%; padding: 10px; background-color: white;">
       <h3><strong>£<%= @property.price_per_night.round(2) %></strong> / night</h3>
       <p><%= @property.summary %></p>
       <p><%= @property.address %></p>
+      <p>Bedrooms: <%= @property.total_bedrooms %></p>
+      <p>Bathrooms: <%= @property.total_bathrooms %></p>
+      <p>Max Guests: <%= @property.total_occupancy %></p>
       <ul class="property-feature-list">
-        <li <%= @property.has_kitchen ? "" : 'style=color:grey;' %>><%= @property.has_kitchen ? ':) has Kitchen' : ':( has Kitchen' %></li>
-        <li <%= @property.has_internet ? "" : 'style=color:grey;' %>><%= @property.has_internet ? ":) has Internet" : ":( has Internet" %></li>
-        <li <%= @property.has_aircon ? "" : 'style=color:grey;' %>><%= @property.has_aircon ? ":) has Air Con" : ":( has Air Con" %></li>
-        <li  <%= @property.has_heating ? "" : 'style=color:grey;' %>><%= @property.has_heating ? ":) has Heating" : ":( has Heating" %></li>
+        <li <%= @property.has_kitchen ? "" : 'style=color:grey;' %>><%= @property.has_kitchen ? '😊 has Kitchen' : '😞 has Kitchen' %></li>
+        <li <%= @property.has_internet ? "" : 'style=color:grey;' %>><%= @property.has_internet ? "😊 has Internet" : "😞 has Internet" %></li>
+        <li <%= @property.has_aircon ? "" : 'style=color:grey;' %>><%= @property.has_aircon ? "😊 has Air Con" : "😞 has Air Con" %></li>
+        <li  <%= @property.has_heating ? "" : 'style=color:grey;' %>><%= @property.has_heating ? "😊 has Heating" : "😞 has Heating" %></li>
       </ul>
     </div>
-    <% unless session["warden.user.user.key"][0][0] == @property.user_id %>
-      <div class="booking-form" style="height: 50vh; background-color: white;">
-        <h2>Booking Form</h2>
-        <%= render "bookings/booking_form", property: @property, booking: @booking %>
-      </div>
-    <% end %>
+    <div class="booking-form" style="width: 50%; padding: 10px; background-color: white;">
+      <h2>Booking Form</h2>
+      <%= render "bookings/booking_form", property: @property, booking: @booking %>
+    </div>
   </div>
 </div>
 
