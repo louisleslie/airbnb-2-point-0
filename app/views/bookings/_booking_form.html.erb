@@ -1,10 +1,28 @@
-<%= simple_form_for [@property, @booking] do |f| %>
-  <%= f.input :start_date, as: :date %>
-  <%= f.input :end_date, as: :date %>
-  <%= f.input :number_of_guests, collection: 1..@property.total_occupancy %>
-  <% if @property.user == current_user %>
-    <%= f.input :status, collection: [ "Accept", "Decline", "Pending"]%>
+<% if @property %>
+
+  <%= simple_form_for [@property, @booking] do |f| %>
+    <%= f.input :start_date, as: :date %>
+    <%= f.input :end_date, as: :date %>
+    <%= f.input :number_of_guests, collection: 1..@property.total_occupancy %>
+    <% if @property.user == current_user %>
+      <%= f.input :status, collection: [ "Accept", "Decline", "Pending"]%>
+    <% end %>
+    <p><strong>Total:</strong> £<%= @property.price_per_night %><p>
+    <%= f.submit label: "Book!", class: "btn btn-primary" %>
   <% end %>
-  <p><strong>Total:</strong> £<%= @property.price_per_night %><p>
-  <%= f.submit label: "Book!", class: "btn btn-primary" %>
+
+<% else %>
+
+  <%= simple_form_for [@booking] do |f| %>
+    <%= f.input :start_date, as: :date %>
+    <%= f.input :end_date, as: :date %>
+    <%= f.input :number_of_guests, collection: 1..@booking.property.total_occupancy %>
+    <% if @booking.property.user == current_user %>
+      <%= f.input :status, collection: [ "Accept", "Decline", "Pending"]%>
+    <% end %>
+    <p><strong>Total:</strong> £<%= @booking.property.price_per_night %><p>
+    <%= f.submit label: "Book!", class: "btn btn-primary" %>
+  <% end %>
+
+
 <% end %>
