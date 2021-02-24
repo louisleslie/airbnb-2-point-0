@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
-  def create # Louis 
+  def create # Louis
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.property_id = params[:property_id]
@@ -17,7 +17,6 @@ class BookingsController < ApplicationController
       render "properties/show"
     end
   end
-
 
   def show # Yunus
   end
@@ -35,11 +34,8 @@ class BookingsController < ApplicationController
   end
 
   def destroy # Yunus
-<<<<<<< HEAD
     @booking.destroy
-    redirect_to :index
-=======
->>>>>>> master
+    redirect_to root_path
   end
 
   private
@@ -48,14 +44,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
-<<<<<<< HEAD
-  def property_params
-    params.require(:property).permit(:start_date, :end_date, :total_cost, :price_per_night, :number_of_guests, :status)
-=======
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :total_cost, :price_per_night, :number_of_guests,
-                                    :status)
-
->>>>>>> master
+    params.require(:booking).permit(:start_date, :end_date, :total_cost, :price_per_night, :number_of_guests, :status)
   end
 end
