@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:edit]
+  before_action :set_review, only: [:edit, :destroy, :update]
   def edit # no need to write anything inside due to before action
   end
 
@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
   
   def destroy 
     @review.destroy
-    redirect_to booking_path #I am now sure about this we should disscuss.
+    redirect_to booking_path(@booking)
   end
 
   private
