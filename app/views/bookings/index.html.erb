@@ -14,11 +14,15 @@
     <div class="tab-pane fade show active" id="my-bookings-tab">
       <h1>My Bookings</h1>
       <% @bookings.each do |booking| %>
-        <%= link_to booking.property.name , booking_path(booking) %>
-        <p><%= booking.start_date %> - <%= booking.end_date %></p>
-        <p><%= booking.property.address %></p>
-        <p><%= booking.property.summary %></p>
-        <p>Status: <%= booking.status %></p>
+        <div class="card-container">
+          <div class="card-contents">
+            <%= link_to booking.property.name , booking_path(booking) %>
+            <p><%= booking.start_date %> - <%= booking.end_date %></p>
+            <p><%= booking.property.address %></p>
+            <p><%= booking.property.summary %></p>
+            <p>Status: <%= booking.status %></p>
+          </div>
+        </div>
       <% end %>
     </div>
 
