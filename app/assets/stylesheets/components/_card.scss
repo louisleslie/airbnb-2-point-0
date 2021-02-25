@@ -15,12 +15,18 @@
 }
 
 .card-image-container {
-  width: 40%;
+  max-width: 40%;
   padding: 8px;
+  width: 40%;
+  object-fit: cover;
 }
 
 .card-image {
   border-radius: 8px;
+  width: 100%;
+  height: 200px;
+  background: $dark-grey;
+  object-fit: cover;
 }
 
 .card-contents {
