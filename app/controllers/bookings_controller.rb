@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :destroy, :update]
 
   def new # Louis
-    @booking = Booking.new
+    @booking = Booking.new(start_date: Date.today)
   end
 
   def create # Louis
@@ -31,6 +31,7 @@ class BookingsController < ApplicationController
 
   def index # Jake
     @bookings = current_user.bookings
+    @properties = current_user.properties
   end
 
   def destroy # Yunus
