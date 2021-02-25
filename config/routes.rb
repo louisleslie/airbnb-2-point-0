@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'favourites/index'
   resources :properties do
     resources :bookings, only: :create
   end
