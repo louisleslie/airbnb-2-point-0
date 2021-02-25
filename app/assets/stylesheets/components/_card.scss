@@ -318,3 +318,12 @@ bottomBubbles {  0% {
  background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
 }
 }
+
+.pink {
+  color: $pink;
+  
+  &:hover {
+    color: $dark-pink;
+  }
+}
+

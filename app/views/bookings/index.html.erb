@@ -3,10 +3,10 @@
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#my-bookings-tab">Bookings</a>
+      <a class="nav-link active pink" data-toggle="tab" href="#my-bookings-tab">Bookings</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link"  data-toggle="tab" href="#property-bookings-tab">Property bookings</a>
+      <a class="nav-link pink"  data-toggle="tab" href="#property-bookings-tab">Property bookings</a>
     </li>
   </ul>
 
@@ -16,7 +16,7 @@
       <% @bookings.each do |booking| %>
         <div class="card-container">
           <div class="card-contents">
-            <%= link_to booking.property.name , booking_path(booking) %>
+            <%= link_to booking.property.name , booking_path(booking), class: "card-title pink" %>
             <p><%= booking.start_date %> - <%= booking.end_date %></p>
             <p><%= booking.property.address %></p>
             <p><%= booking.property.summary %></p>
@@ -30,10 +30,15 @@
       <h1>My property bookings</h1>
       <% @properties.each do |property| %>
         <% property.bookings.each do |booking| %>
-          <h3><%= property.name %></h3>
-          <p><%= booking.start_date %> - <%= booking.end_date %></p>
-          <p><%= booking.property.address %></p>
-          <p><%= booking.property.summary %></p>
+          <div class="card-container">
+            <div class="card-contents">
+              <%= link_to property.name , property_path(property), class: "card-title pink" %>
+              <p><%= booking.start_date %> - <%= booking.end_date %></p>
+              <p><%= booking.property.address %></p>
+              <p><%= booking.property.summary %></p>
+              <p>Status: <%= booking.status %></p>
+            </div>
+          </div>
         <% end %>
       <% end %>
     </div>
