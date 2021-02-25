@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+
   before_action :set_review, only: [:edit, :destroy, :update]
   def edit # no need to write anything inside due to before action
   end

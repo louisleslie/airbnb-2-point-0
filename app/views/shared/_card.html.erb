@@ -16,7 +16,9 @@
         WIFI
       </p>
       <% end %>
+      
       <p class="card-supertitle"><%= property.total_bedrooms %> BED<% if property.total_bedrooms > 1 %>S<% end %> · <%= property.total_bathrooms %> BATH<% if property.total_bathrooms > 1 %>S<% end %></p>
+
       <div class="card-heart-icon-container">
         <button type="button" class="confetti-button"></button>
       </div>
@@ -24,6 +26,7 @@
 
     <h2 class='card-title'><%= property.name %></h2>
     <p class='card-subtitle'><%= property.address %></p>
+
 
     <div class="card-spacer"></div>
 
