@@ -31,7 +31,12 @@ class PropertiesController < ApplicationController
 
   def index
     unless @properties
-      @properties = Property.all
+      if params[:query].present?
+        coordinates = Geocoder.search(params[:query]).first.coordinates
+        @properties = Property.near(coordinates, 50)
+      else
+        @properties = Property.all
+      end
     end
 
     @markers = @properties.geocoded.map do |property|
