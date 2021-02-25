@@ -1,0 +1,24 @@
+<div class="card-container">
+
+  <div class="card-image-container">
+    <img src="https://source.unsplash.com/random?sig=<%= index %>/&appartment" alt="" class="card-image">
+  </div>
+
+  <div class="card-contents">
+
+    <div class="card-badges">
+      <% if property.has_internet  %>
+      <p class="card-badge">
+        WIFI
+      </p>
+      <% end %>
+      <p class="card-supertitle"><%= property.total_bedrooms %> BEDS · <%= property.total_bathrooms %> BATHS</p>
+    </div>
+
+    <h2 class='card-title'><%= property.name %></h2>
+    <p class='card-subtitle'><%= property.address %></p>
+
+    <a><%= link_to "View property", property_path(property) %></a>
+
+  </div>
+</div>
