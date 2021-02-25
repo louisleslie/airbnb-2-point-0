@@ -37,8 +37,11 @@
     <h1>Reviews of the property</h1>
     <% numberofreviews = @property.reviews.count %>
     <% sumofreviewratings = @property.reviews.map(&:rating).sum %>
+    <% if @property.reviews.nil? %>
     <h2>Overall rating of the property is <%= sumofreviewratings.fdiv(numberofreviews) %> </h2>
-    
+    <% else %>
+    <h2>this property has been reviewed yet.</h2>
+    <% end %>
     <% @property.reviews.each do |review| %>
      <div class="mt-2"> <p><%= review.rating %> stars Reviewed by
       <strong><%="#{review.booking.user.first_name} #{review.booking.user.last_name}"%></strong> 
