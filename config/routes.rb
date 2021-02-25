@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :properties do
     resources :bookings, only: :create
-    resources :reviews, only: :create
+  end
+  resources :bookings, only: :create do 
+  resources :reviews, only: :create 
   end
   resources :bookings, except: [:new, :create]
   resources :reviews, except: [:new, :create]
