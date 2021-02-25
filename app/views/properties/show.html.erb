@@ -2,6 +2,11 @@
 <div class="container">
   <%= link_to "Back to Properties", properties_path %>
   <h1><%= "#{@property.name}"%></h1>
+  <% if (current_user.favourite_ids & @property.favourite_ids).any? %>
+    <%= link_to "Remove Favourite", property_favourite_path(@property), class: "btn btn-danger", method: :delete %>
+  <% else %>
+    <%= link_to "Add Favourite", property_favourites_path(@property), class: "btn btn-primary", method: :post %>
+  <% end %>
   <div class="container" style="height: 75vh; background-color: white;">
     <img src="https://a0.muscache.com/im/pictures/f7388724-65a9-4ad8-9b88-9708421224a0.jpg?im_w=720" alt="" class="whatever">
   </div>
