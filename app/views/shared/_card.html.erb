@@ -21,7 +21,14 @@
     <h2 class='card-title'><%= property.name %></h2>
     <p class='card-subtitle'><%= property.address %></p>
 
-    <a><%= link_to "View property", property_path(property) %></a>
+    <a><%= link_to "View property", property_path(property), class: "card-link"%></a>
+
+
+    <div class="card-metadata">
+      <p class="card-price"><span class="card-price-number">£<%= property.price_per_night %> </span><span class="card-price-unit">/<span class="card-price-small">night</span></span></p>
+      <div class="card-reviews">⭐⭐⭐⭐⭐<span class="card-review-count">34 reviews</span></div>
+    </div>
+
 
   </div>
 </div>

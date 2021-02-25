@@ -24,8 +24,12 @@
 }
 
 .card-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   padding: 8px;
   width: 60%;
+  padding-left: 16px;
 }
 
 .card-badges {
@@ -34,8 +38,8 @@
   font-size: 12px;
   color: $dark-grey;
   font-weight: 500;
-  padding-left: 12px;
   position: relative;
+  height: 32px;
 }
 
 .card-badge {
@@ -75,20 +79,73 @@
   }
 }
 
-
 .card-title {
   font-size: 16px;
   font-weight: 600;
 }
 
 .card-subtitle {
-  font-size: 14px;
+  font-size: 12px;
   color: $dark-grey;
 }
 
-.card-paragraph {
+.card-link {
+  text-decoration: none;
+  font-size: 14px;
+  color: $pink;
+  margin-top: auto;
+
+  &:hover {
+    color: $dark-pink;
+  }
+}
+
+.card-metadata {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 992px) {
+  .card-metadata {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.card-price {
+  margin: 0px;
+    white-space: nowrap;
+}
+
+.card-price-number {
 
 }
+
+
+.card-price-unit {
+  font-size: 16px;
+  color: $dark-grey;
+
+}
+
+.card-price-small {
+  font-size: 12px;
+  color: $dark-grey;
+}
+
+.card-reviews {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.card-review-count {
+    font-size: 12px;
+  color: $dark-grey;
+}
+
 
 .confetti-button {
   -webkit-appearance: none;
