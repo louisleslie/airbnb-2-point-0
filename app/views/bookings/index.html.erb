@@ -13,32 +13,47 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="my-bookings-tab">
       <h1>My Bookings</h1>
-      <% @bookings.each do |booking| %>
-        <div class="card-container">
-          <div class="card-contents">
-            <%= link_to booking.property.name , booking_path(booking), class: "card-title pink" %>
-            <p><%= booking.start_date %> - <%= booking.end_date %></p>
-            <p><%= booking.property.address %></p>
-            <p><%= booking.property.summary %></p>
-            <p>Status: <%= booking.status %></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="tab-pane fade" id="property-bookings-tab">
-      <h1>My property bookings</h1>
-      <% @properties.each do |property| %>
-        <% property.bookings.each do |booking| %>
+      <% if @bookings.empty? %>
+        <%= link_to 'Book your first trip now', properties_path, class: "card-title pink" %>
+      <% else %>
+        <% @bookings.each do |booking| %>
           <div class="card-container">
             <div class="card-contents">
-              <%= link_to property.name , property_path(property), class: "card-title pink" %>
-              <p><%= booking.start_date %> - <%= booking.end_date %></p>
-              <p><%= booking.property.address %></p>
+              <%= link_to booking.property.name , booking_path(booking), class: "card-title pink" %>
+              <% start_date_time_obj = booking.start_date.to_datetime %>
+              <% start_date = start_date_time_obj.strftime("%d %B %Y") %>
+              <% end_date_time_obj = booking.end_date.to_datetime %>
+              <% end_date = end_date_time_obj.strftime("%d %B %Y") %>
+              <p class=card-subtitle><%= start_date %> - <%= end_date %></p>
               <p><%= booking.property.summary %></p>
+              <p><%= booking.property.address %></p>
               <p>Status: <%= booking.status %></p>
             </div>
           </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="tab-pane fade" id="property-bookings-tab">
+      <h1>My Property Bookings</h1>
+      <% if @properties.empty? %>
+        <%= link_to "Add a property to get bookings", new_property_path, class: "card-title pink" %>
+      <% else %>
+        <% @properties.each do |property| %>
+          <% property.bookings.each do |booking| %>
+            <div class="card-container">
+              <div class="card-contents">
+                <%= link_to property.name , property_path(property), class: "card-title pink" %>
+                <% start_date_time_obj = booking.start_date.to_datetime %>
+                <% start_date = start_date_time_obj.strftime("%d %B %Y") %>
+                <% end_date_time_obj = booking.end_date.to_datetime %>
+                <% end_date = end_date_time_obj.strftime("%d %B %Y") %>
+                <p class="card-subtitle"><%= start_date %> - <%= end_date %></p>
+                <p><%= booking.property.summary %></p>
+                <p><%= booking.property.address %></p>
+                <p>Status: <%= booking.status %></p>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
