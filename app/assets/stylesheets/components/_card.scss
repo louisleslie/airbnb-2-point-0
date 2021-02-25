@@ -27,6 +27,8 @@
   color: $dark-grey;
   font-weight: 500;
   padding-left: 12px;
+  border: 1px solid blue;
+    position: relative;
 }
 
 .card-badge {
@@ -35,9 +37,32 @@
   border-radius: 9999px;
   padding: 2px 8px;
   margin-right: 12px;
+  border: 1px solid orange;
+
 }
 
 .card-supertitle {
+  border: 1px solid orange;
+
+}
+
+.card-heart-icon-container {
+  height: 24px;
+  width: 24px;
+  border: 1px solid green;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 2px;
+}
+
+.card-heart-icon {
+
+}
+
+.card-heart-icon-path {
+  height: 24px;
+  width: 24px;
 }
 
 .card-title {
