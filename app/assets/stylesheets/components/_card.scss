@@ -4,6 +4,14 @@
   margin-top: 16px;
   border-radius: 8px;
   padding: 8px;
+
+  transition: all .25s ease-in-out;
+
+  &:hover {
+    transform: scale(1.025);
+    box-shadow: 0px 8px 12px 2px rgba(72,72,72,.08);
+  }
+
 }
 
 .card-image-container {
@@ -16,8 +24,12 @@
 }
 
 .card-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   padding: 8px;
   width: 60%;
+  padding-left: 16px;
 }
 
 .card-badges {
@@ -26,7 +38,8 @@
   font-size: 12px;
   color: $dark-grey;
   font-weight: 500;
-  padding-left: 12px;
+  position: relative;
+  height: 32px;
 }
 
 .card-badge {
@@ -35,9 +48,35 @@
   border-radius: 9999px;
   padding: 2px 8px;
   margin-right: 12px;
+
+
 }
 
 .card-supertitle {
+
+
+}
+
+.card-heart-icon-container {
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 2px;
+}
+
+.card-heart-icon {
+  fill: transparent;
+  stroke: rgb(34, 34, 34);
+  stroke-width: 2;
+  overflow: visible;
+
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .card-title {
@@ -46,10 +85,143 @@
 }
 
 .card-subtitle {
-  font-size: 14px;
+  font-size: 12px;
   color: $dark-grey;
 }
 
-.card-paragraph {
+.card-link {
+  text-decoration: none;
+  font-size: 14px;
+  color: $pink;
+  margin-top: auto;
 
+  &:hover {
+    color: $dark-pink;
+  }
+}
+
+.card-metadata {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 992px) {
+  .card-metadata {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.card-price {
+  margin: 0px;
+    white-space: nowrap;
+}
+
+.card-price-number {
+
+}
+
+
+.card-price-unit {
+  font-size: 16px;
+  color: $dark-grey;
+
+}
+
+.card-price-small {
+  font-size: 12px;
+  color: $dark-grey;
+}
+
+.card-reviews {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.card-review-count {
+    font-size: 12px;
+  color: $dark-grey;
+}
+
+
+.confetti-button {
+  -webkit-appearance: none;
+  appearance: none;
+  background: url("https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1614249707~hmac=a982af09d86cd0d536ea446d550268ef");
+  color: #fff;
+  height: 24px;
+  width: 24px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+}
+
+.confetti-button:focus { outline: 0; }
+
+.confetti-button:before, .confetti-button:after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 140%;
+  height: 100%;
+  left: -20%;
+  z-index: -1000;
+  transition: all ease-in-out 0.5s;
+  background-repeat: no-repeat;
+}
+
+.confetti-button:before {
+  display: none;
+  top: -75%;
+  background-image: radial-gradient(circle, #FF385C 20%, transparent 20%), radial-gradient(circle, transparent 20%, #FF385C 20%, transparent 30%), radial-gradient(circle, #FF385C 20%, transparent 20%), radial-gradient(circle, #FF385C 20%, transparent 20%), radial-gradient(circle, transparent 10%, #FF385C 15%, transparent 20%), radial-gradient(circle, #FF385C 20%, transparent 20%), radial-gradient(circle, #FF385C 20%, transparent 20%), radial-gradient(circle, #FF385C 20%, transparent 20%), radial-gradient(circle, #FF385C 20%, transparent 20%);
+  background-size: 20% 20%, 40% 40%, 30% 30%, 40% 40%, 36% 36%, 20% 20%, 30% 30%, 20% 20%, 36% 36%;
+}
+
+.confetti-button:after {
+  display: none;
+  bottom: -75%;
+  background-image: radial-gradient(circle, #FF385C 20%, transparent 20%), radial-gradient(circle, #FF385C 20%, transparent 20%), radial-gradient(circle, transparent 10%, #FF385C 15%, transparent 20%), radial-gradient(circle, #FF385C 20%, transparent 20%), radial-gradient(circle, #FF385C 20%, transparent 20%), radial-gradient(circle, #FF385C 20%, transparent 20%), radial-gradient(circle, #FF385C 20%, transparent 20%);
+  background-size: 30% 30%, 40% 40%, 36% 36%, 40% 40%, 30% 30%, 20% 20%, 40% 40%;
+}
+
+.confetti-button:active {
+  transform: scale(0.9);
+}
+
+.confetti-button.animate:before {
+  display: block;
+  animation: topBubbles ease-in-out 0.75s forwards;
+}
+
+.confetti-button.animate:after {
+  display: block;
+  animation: bottomBubbles ease-in-out 0.75s forwards;
+}
+ @keyframes
+topBubbles {  0% {
+ background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+}
+ 50% {
+ background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+}
+ 100% {
+ background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+ background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+}
+}
+@keyframes
+bottomBubbles {  0% {
+ background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+}
+ 50% {
+ background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+}
+ 100% {
+ background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+ background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+}
 }
