@@ -2,6 +2,7 @@
   display: flex;
   background-color: white;
   margin-top: 16px;
+  margin-bottom: 16px;
   border-radius: 8px;
   padding: 8px;
   position: relative;
@@ -104,7 +105,7 @@
 
 }
 
-.card-heart-icon-container {
+.card-buttons-container {
   height: 24px;
   width: 24px;
   position: absolute;
@@ -208,7 +209,7 @@
 .confetti-button {
   -webkit-appearance: none;
   appearance: none;
-  background: url("https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1614249707~hmac=a982af09d86cd0d536ea446d550268ef");
+  background: url("https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1614271308~hmac=59db6d245be79d40adbd8061d9685d11");
   color: #fff;
   height: 24px;
   width: 24px;
