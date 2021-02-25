@@ -1,4 +1,4 @@
-<div class="header-search-form">
+<div class="<%= @action_name == "index" ? 'header-search-form' : 'header-search-form-property-index' %>">
 
  <%= form_tag properties_path, method: :get do %>
 

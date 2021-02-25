@@ -4,6 +4,16 @@
   flex-direction: column;
   align-items: stretch;
   max-width: 560px;
+  margin-top: 16px;
+}
+
+.header-search-form-property-index {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  margin-top: 16px;
 }
 
 .header-search-form-input{
