@@ -1,31 +1,44 @@
 <div class="container">
-    <div class="section mt-2">
-        <h1>Your Booking information for this properry</h1>
-        <p>Your reservation address: <%= @booking.property.address %></p>  
-    </div>
-    <div class="section d-flex">
-        <% @booking.property.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-    </div>
-    <div class="section shadow-lg p-3 mb-5 bg-white rounded">
-            <h1>Hosted By <%= @booking.property.user.first_name %> </h1>
-        <ul class ="list-unstyled wrapper-dashboard mt-2 text-left align-items-center p-5">
-            
-            <li><p>Your Booking status is <strong><%= @booking.status %></strong></p></li> 
-            <li><p>Your booking start date: <%= @booking.start_date %></p></li>
-            <li></li> end date: <%= @booking.end_date %> </p></li>
-            <li><p>total cost of the reservation: <%= @booking.total_cost %>£</p> </li>
-            <% unless @booking.price_per_night.nil? %>
-            <li><p>price per night: <%= @booking.price_per_night %></p></li>
-            <% end %>
-            <% unless @booking.number_of_guests.nil? %>
-                <li><p>number of guests: <%= @booking.number_of_guests %></p></li>
-            <% end %>
-            <li><h1>wish you have a good experience with us!</h1></li>
-        </ul>
-        <%= link_to "Back to your bookings", bookings_path, class: "btn btn-success" %>
-    </div>
-    
-     
+
+  <div class="section mt-2">
+    <h1>Your Booking information for this property</h1>
+    <p>Your reservation address: <%= @booking.property.address %></p>
+  </div>
+  <div class="section d-flex">
+    <% @booking.property.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  </div>
+  <div class="section shadow-lg p-3 mb-5 bg-white rounded">
+    <h1>Hosted By <%= @booking.property.user.first_name %> </h1>
+    <ul class ="list-unstyled wrapper-dashboard mt-2 text-left align-items-center p-5">
+      <li>
+        <p>Your Booking status is <strong><%= @booking.status %></strong></p>
+      </li>
+      <li>
+        <p>Your booking start date: <%= @booking.start_date %></p>
+      </li>
+      <li></li>
+       end date: <%= @booking.end_date %> </p>
+  </li>
+  <li>
+    <p>total cost of the reservation: <%= @booking.total_cost %>£</p>
+     </li>
+  <% unless @booking.price_per_night.nil? %>
+    <li>
+      <p>price per night: <%= @booking.price_per_night %></p>
+    </li>
+  <% end %>
+  <% unless @booking.number_of_guests.nil? %>
+    <li>
+      <p>number of guests: <%= @booking.number_of_guests %></p>
+    </li>
+  <% end %>
+  <li>
+    <h1>wish you have a good experience with us!</h1>
+  </li>
+</ul>
+<%= link_to "Back to your bookings", bookings_path, class: "btn btn-success" %>
 </div>
+</div>
+

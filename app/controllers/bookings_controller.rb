@@ -31,6 +31,7 @@ class BookingsController < ApplicationController
 
   def index # Jake
     @bookings = current_user.bookings
+    @properties = current_user.properties
   end
 
   def destroy # Yunus

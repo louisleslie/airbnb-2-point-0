@@ -1,0 +1,54 @@
+<div class="card-container">
+
+  <div class="card-image-container">
+    <img src="https://source.unsplash.com/random?sig=<%= index %>/&appartment" alt="" class="card-image">
+  </div>
+
+  <div class="card-contents">
+
+    <div class="card-badges">
+      <% if property.has_internet  %>
+      <p class="card-badge">
+        WIFI
+      </p>
+      <% end %>
+      <p class="card-supertitle"><%= property.total_bedrooms %> BEDS · <%= property.total_bathrooms %> BATHS</p>
+      <div class="card-heart-icon-container">
+        <button type="button" class="confetti-button"></button>
+      </div>
+    </div>
+
+    <h2 class='card-title'><%= property.name %></h2>
+    <p class='card-subtitle'><%= property.address %></p>
+
+    <a><%= link_to "View property", property_path(property), class: "card-link"%></a>
+
+
+    <div class="card-metadata">
+      <p class="card-price"><span class="card-price-number">£<%= property.price_per_night %> </span><span class="card-price-unit">/<span class="card-price-small">night</span></span></p>
+      <div class="card-reviews">⭐⭐⭐⭐⭐<span class="card-review-count">34 reviews</span></div>
+    </div>
+
+
+  </div>
+</div>
+
+<script>
+  var animateButton = function(e) {
+
+    e.preventDefault;
+  //reset animation
+  e.target.classList.remove('animate');
+
+  e.target.classList.add('animate');
+  setTimeout(function(){
+    e.target.classList.remove('animate');
+  },700);
+};
+
+var classname = document.getElementsByClassName("confetti-button");
+
+for (var i = 0; i < classname.length; i++) {
+  classname[i].addEventListener('click', animateButton, false);
+}
+</script>
