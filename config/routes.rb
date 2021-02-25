@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+
   get 'favourites/index'
   root to: "pages#home"
   resources :properties do
     resources :bookings, only: :create
+    resources :favourites, only: [:create, :destroy]
   end
+  resources :bookings, except: [:new, :create] do 
+     resources :reviews, only: :create 
+  end
+
   resources :bookings, except: [:new, :create] do 
      resources :reviews, only: :create 
   end

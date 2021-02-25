@@ -30,7 +30,9 @@ class PropertiesController < ApplicationController
   end
 
   def index
-    @properties = Property.all
+    unless @properties
+      @properties = Property.all
+    end
 
     @markers = @properties.geocoded.map do |property|
       {
