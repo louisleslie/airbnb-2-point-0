@@ -42,6 +42,7 @@ const updateTotalCost = () => {
         totalNights.style.color = "black";
         totalNights.innerText = `${number_of_nights} night${(number_of_nights === 1 ? '' : 's') }`;
         totalCost.innerHTML = `<strong>Total:</strong> £${(number_of_nights * price).toFixed(2)}`;
+
         costForm.value = number_of_nights * price;
       }
     } else {
