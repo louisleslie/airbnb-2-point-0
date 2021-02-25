@@ -27,16 +27,16 @@
 
     <div class="card-spacer"></div>
 
-    <p class='card-subtitle'><% if property.has_kitchen %> · Kitchen   <% end %>
+    <div class="card-details">
+      <p class='card-subtitle'><% if property.has_kitchen %> · Kitchen   <% end %>
 
-                              <% if property.has_tv %> · TV   <% end %>
+                                <% if property.has_tv %> · TV   <% end %>
 
-                              <% if property.has_heating %> · Heating   <% end %>
+                                <% if property.has_heating %> · Heating   <% end %>
 
-                              <% if property.has_aircon %> · Air con  <% end %></p>
-
-    <a><%= link_to "View property", property_path(property), class: "card-link"%></a>
-
+                                <% if property.has_aircon %> · Air con  <% end %></p>
+    </div>
+      <a><%= link_to "View property", property_path(property), class: "card-link"%></a>
 
     <div class="card-metadata">
       <p class="card-price"><span class="card-price-number">£<%= property.price_per_night %> </span><span class="card-price-unit">/<span class="card-price-small">night</span></span></p>
