@@ -25,6 +25,16 @@
     <h2 class='card-title'><%= property.name %></h2>
     <p class='card-subtitle'><%= property.address %></p>
 
+    <div class="card-spacer"></div>
+
+    <p class='card-subtitle'><% if property.has_kitchen %> · Kitchen   <% end %>
+
+                              <% if property.has_tv %> · TV   <% end %>
+
+                              <% if property.has_heating %> · Heating   <% end %>
+
+                              <% if property.has_aircon %> · Air con  <% end %></p>
+
     <a><%= link_to "View property", property_path(property), class: "card-link"%></a>
 
 

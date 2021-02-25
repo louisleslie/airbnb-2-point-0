@@ -136,6 +136,13 @@
   color: $dark-grey;
 }
 
+.card-spacer {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  width: 32px;
+  border-top: 1px solid rgb(221, 221, 221);
+}
+
 .card-link {
   text-decoration: none;
   font-size: 14px;
