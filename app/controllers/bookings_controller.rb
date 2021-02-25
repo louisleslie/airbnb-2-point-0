@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
   end
 
   def show # Yunus
+    @review = Review.new
   end
 
   def edit # Alex

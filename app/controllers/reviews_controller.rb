@@ -10,13 +10,15 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.booking_id =  params[:booking_id]
-    @review.property_id = params[:property_id]
-    @Booking = Booking.find(params[:booking_id])
+    @booking = Booking.find(params[:booking_id])
+    @review.booking =  @booking
+    @review.property = @booking.property
     if @review.save
       redirect_to booking_path(@booking)
     else
-      render "booking/show"
+      flash[:alert] = "Something went wrong."
+      render :new
+    end
   end
 
   def update
@@ -32,6 +34,7 @@ class ReviewsController < ApplicationController
   private
   def set_review
     @review = Review.find(params[:id])
+  end
 
   def review_params
     params.require(:review).permit(:content, :rating)
