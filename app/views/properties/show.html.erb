@@ -10,7 +10,29 @@
   <% end %>
 
   <div class="container" style="height: 75vh; background-color: white;">
-    <img src="https://a0.muscache.com/im/pictures/f7388724-65a9-4ad8-9b88-9708421224a0.jpg?im_w=720" alt="" class="whatever">
+    <div id="propertyCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <% counter = 0 %>
+        <% @property.photos.each do |photo| %>
+          <% if counter == 0 %>
+            <div class="carousel-item active">
+          <% else %>
+            <div class="carousel-item">
+            <% end %>
+            <%= cl_image_tag photo.key, class:"d-block w-100", cloud_name: "dmdajbspi", style: "object-fit: cover; height: 75vh;" %>
+          </div>
+          <% counter += 1 %>
+        <% end %>
+      </div>
+      <a class="carousel-control-prev" href="#propertyCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#propertyCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </div>
   <div class="d-flex flex-wrap justify-content-between">
     <div class="property-details" style="width: 50%; padding: 10px; background-color: white;">
