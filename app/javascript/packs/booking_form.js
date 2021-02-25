@@ -27,7 +27,7 @@ const updateTotalCost = () => {
       if (Number.isInteger(number_of_nights)) {
         totalNights.style.color = "black";
         totalNights.innerText = `${number_of_nights} night${(number_of_nights === 1 ? '' : 's') }`;
-        totalCost.innerText = `<strong>Total:</strong> £ ${number_of_nights * price}`;
+        totalCost.innerText = `<strong>Total:</strong> £ ${(number_of_nights * price).toFixed(2)}`;
         costForm.value = number_of_nights * price;
       }
     } else {
@@ -41,7 +41,7 @@ const updateTotalCost = () => {
       if (Number.isInteger(number_of_nights)) {
         totalNights.style.color = "black";
         totalNights.innerText = `${number_of_nights} night${(number_of_nights === 1 ? '' : 's') }`;
-        totalCost.innerHTML = `<strong>Total:</strong> £${number_of_nights * price}`;
+        totalCost.innerHTML = `<strong>Total:</strong> £${(number_of_nights * price).toFixed(2)}`;
         costForm.value = number_of_nights * price;
       }
     } else {

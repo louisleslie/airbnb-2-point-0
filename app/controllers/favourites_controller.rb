@@ -1,6 +1,12 @@
 class FavouritesController < ApplicationController
   def index
     @favourites = Favourite.where(user_id: current_user.id)
+    
+    @properties = []
+    @favourites.each do |fav|
+      @properties << fav.property
+    end
+    render 'properties/index'
   end
 
   def create
