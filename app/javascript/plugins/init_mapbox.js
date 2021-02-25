@@ -42,6 +42,9 @@ const initMapbox = () => {
       .setPopup(popup)
       .addTo(map);
     });
+
+
+    map.addControl(new mapboxgl.FullscreenControl());
     fitMapToMarkers(map, markers);
   }
 };
