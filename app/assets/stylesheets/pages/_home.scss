@@ -17,6 +17,10 @@
   color: white;
   font-weight: 600;
   font-size: 54px;
+  text-shadow: -1px 1px 0 #000,
+				  1px 1px 0 #000,
+				 1px -1px 0 #000,
+				-1px -1px 0 #000;
 }
 
 .header-paragraph {
