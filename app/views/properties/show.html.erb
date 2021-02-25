@@ -2,12 +2,6 @@
 <div class="container">
   <%= link_to "Back to Properties", properties_path %>
   <h1><%= "#{@property.name}"%></h1>
-  <div class="owner-controls">
-    <% if session["warden.user.user.key"][0][0] == @property.user_id %>
-      <%= link_to "Edit", edit_property_path(@property), class: "btn btn-success" %>
-      <%= link_to "Delete", property_path(@property), method: "delete", class: "btn btn-danger", data: { confirm: "Remove This Property?" }%>
-    <% end %>
-  <div>
   <div class="container" style="height: 75vh; background-color: white;">
     <img src="https://a0.muscache.com/im/pictures/f7388724-65a9-4ad8-9b88-9708421224a0.jpg?im_w=720" alt="" class="whatever">
   </div>
@@ -26,10 +20,17 @@
         <li  <%= @property.has_heating ? "" : 'style=color:grey;' %>><%= @property.has_heating ? "😊 has Heating" : "😞 has Heating" %></li>
       </ul>
     </div>
-    <div class="booking-form" style="width: 50%; padding: 10px; background-color: white;">
-      <h2>Booking Form</h2>
-      <%= render "bookings/booking_form", property: @property, booking: @booking %>
-    </div>
+    <% if session["warden.user.user.key"][0][0] == @property.user_id %>
+      <div class="owner-controls" style="width: 50%; padding: 10px; background-color: white;">
+        <%= link_to "Edit", edit_property_path(@property), class: "btn btn-success" %>
+        <%= link_to "Delete", property_path(@property), method: "delete", class: "btn btn-danger", data: { confirm: "Remove This Property?" }%>
+      <div>
+    <% else %>
+      <div class="booking-form" style="width: 50%; padding: 10px; background-color: white;">
+        <h2>Booking Form</h2>
+        <%= render "bookings/booking_form", property: @property, booking: @booking %>
+      </div>
+    <% end %>
   </div>
 </div>
 
