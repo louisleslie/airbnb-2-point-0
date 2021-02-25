@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'reviews/edit'
+  get 'reviews/new'
+  get 'edit/new'
   resources :properties do
     resources :bookings, only: :create
   end
