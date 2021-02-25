@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :destroy, :update]
 
   def new # Louis
-    @booking = Booking.new
+    @booking = Booking.new(start_date: Date.today)
   end
 
   def create # Louis
