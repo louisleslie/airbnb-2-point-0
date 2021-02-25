@@ -90,6 +90,7 @@
   font-weight: 500;
   position: relative;
   height: 32px;
+  border: 1px solid green;
 }
 
 .card-badge {
@@ -106,25 +107,42 @@
 }
 
 .card-buttons-container {
-  height: 24px;
-  width: 24px;
-  position: absolute;
-  right: 0px;
-  top: 0px;
+  display: flex;
+  align-items: center;
   padding: 2px;
+  border: 1px solid red;
+  margin-left: auto;
 }
 
-.card-heart-icon {
-  fill: transparent;
-  stroke: rgb(34, 34, 34);
-  stroke-width: 2;
-  overflow: visible;
+.button-container {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  width: 24px;
+  justify-content: center;
+  padding: 8px;
+  border: 1px solid blue;
+}
 
+.button {
+  color: $dark-grey;
   transition: all .2s ease-in-out;
+  padding: 4px;
 
   &:hover {
     transform: scale(1.2);
   }
+}
+
+.edit-button {
+
+}
+
+.delete-button {
+
+}
+.favourite-button {
+
 }
 
 .card-title {
@@ -209,7 +227,7 @@
 .confetti-button {
   -webkit-appearance: none;
   appearance: none;
-  background: url("https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1614271308~hmac=59db6d245be79d40adbd8061d9685d11");
+  // background: url("https://www.flaticon.com/svg/vstatic/svg/1077/1077035.svg?token=exp=1614273332~hmac=f1b37cb144d4edcca0d740026cc1cfb3");
   color: #fff;
   height: 24px;
   width: 24px;

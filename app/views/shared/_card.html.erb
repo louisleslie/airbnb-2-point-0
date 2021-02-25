@@ -11,14 +11,41 @@
   <div class="card-contents">
 
     <div class="card-badges">
+
       <% if property.has_internet  %>
-      <p class="card-badge">
-        WIFI
-      </p>
+        <p class="card-badge">
+          WIFI
+        </p>
       <% end %>
+
       <p class="card-supertitle"><%= property.total_bedrooms %> BED<% if property.total_bedrooms > 1 %>S<% end %> · <%= property.total_bathrooms %> BATH<% if property.total_bathrooms > 1 %>S<% end %></p>
+
       <div class="card-buttons-container">
-        <button type="button" class="confetti-button"></button>
+
+
+        <% if property.user == current_user %>
+        <div class="button-container">
+          <%= link_to edit_property_path(property) do %>
+            <%= image_tag 'edit.svg', class: 'button edit-button'%>
+          <% end %>
+        </div>
+        <% end %>
+
+        <% if property.user == current_user %>
+        <div class="button-container">
+          <%= link_to property_path(property), method: "delete", data: { confirm: "Remove This Property?" } do%>
+            <%= image_tag 'delete.svg', class: 'button delete-button'%>
+          <% end %>
+        </div>
+        <% end %>
+
+        <% if property.user != current_user %>
+        <div class="button-container">
+          <%= link_to properties_path, class: '' do %>
+            <%= image_tag 'favourite.svg', class: 'button favourite-button'%>
+          <% end %>
+        </div>
+        <% end %>
       </div>
     </div>
 
@@ -30,27 +57,27 @@
     <div class="card-details">
       <p class='card-subtitle'><% if property.has_kitchen %> · Kitchen   <% end %>
 
-                                <% if property.has_tv %> · TV   <% end %>
+        <% if property.has_tv %> · TV   <% end %>
 
-                                <% if property.has_heating %> · Heating   <% end %>
+        <% if property.has_heating %> · Heating   <% end %>
 
-                                <% if property.has_aircon %> · Air con  <% end %></p>
-    </div>
+        <% if property.has_aircon %> · Air con  <% end %></p>
+      </div>
       <a><%= link_to "View property", property_path(property), class: "card-link"%></a>
 
-    <div class="card-metadata">
-      <p class="card-price"><span class="card-price-number">£<%= property.price_per_night %> </span><span class="card-price-unit">/<span class="card-price-small">night</span></span></p>
-      <div class="card-reviews">⭐⭐⭐⭐⭐<span class="card-review-count">34 reviews</span></div>
+      <div class="card-metadata">
+        <p class="card-price"><span class="card-price-number">£<%= property.price_per_night %> </span><span class="card-price-unit">/<span class="card-price-small">night</span></span></p>
+        <div class="card-reviews">⭐⭐⭐⭐⭐<span class="card-review-count">34 reviews</span></div>
+      </div>
+
+
     </div>
-
-
   </div>
-</div>
 
-<script>
-  var animateButton = function(e) {
+  <script>
+    var animateButton = function(e) {
 
-    e.preventDefault;
+      e.preventDefault;
   //reset animation
   e.target.classList.remove('animate');
 
