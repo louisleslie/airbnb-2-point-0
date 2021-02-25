@@ -8,20 +8,22 @@
   <div class="d-flex flex-wrap justify-content-between">
     <div class="property-details" style="width: 50%; padding: 10px; background-color: white;">
       <h3><strong>£<%= @property.price_per_night.round(2) %></strong> / night</h3>
+      <p>Hosted by: <%= @property.user.first_name %> <%= @property.user.last_name %></p>
       <p><%= @property.summary %></p>
       <p><%= @property.address %></p>
       <p>Bedrooms: <%= @property.total_bedrooms %></p>
       <p>Bathrooms: <%= @property.total_bathrooms %></p>
       <p>Max Guests: <%= @property.total_occupancy %></p>
       <ul class="property-feature-list">
-        <li <%= @property.has_kitchen ? "" : 'style=color:grey;' %>><%= @property.has_kitchen ? '😊 has Kitchen' : '😞 has Kitchen' %></li>
-        <li <%= @property.has_internet ? "" : 'style=color:grey;' %>><%= @property.has_internet ? "😊 has Internet" : "😞 has Internet" %></li>
-        <li <%= @property.has_aircon ? "" : 'style=color:grey;' %>><%= @property.has_aircon ? "😊 has Air Con" : "😞 has Air Con" %></li>
-        <li  <%= @property.has_heating ? "" : 'style=color:grey;' %>><%= @property.has_heating ? "😊 has Heating" : "😞 has Heating" %></li>
+        <li <%= @property.has_kitchen ? "" : 'style=color:grey;' %>><%= @property.has_kitchen ? '😊 Has a Kitchen' : '😞 No Kitchen' %></li>
+        <li <%= @property.has_internet ? "" : 'style=color:grey;' %>><%= @property.has_internet ? "😊 Has Internet" : "😞 No Internet" %></li>
+        <li <%= @property.has_aircon ? "" : 'style=color:grey;' %>><%= @property.has_aircon ? "😊 Has Air Con" : "😞 No Air Con" %></li>
+        <li  <%= @property.has_heating ? "" : 'style=color:grey;' %>><%= @property.has_heating ? "😊 Has Heating" : "😞 No Heating" %></li>
       </ul>
     </div>
-    <% if session["warden.user.user.key"][0][0] == @property.user_id %>
+    <% if current_user == @property.user %>
       <div class="owner-controls" style="width: 50%; padding: 10px; background-color: white;">
+        <h2>You own this property</h2>
         <%= link_to "Edit", edit_property_path(@property), class: "btn btn-success" %>
         <%= link_to "Delete", property_path(@property), method: "delete", class: "btn btn-danger", data: { confirm: "Remove This Property?" }%>
       <div>
