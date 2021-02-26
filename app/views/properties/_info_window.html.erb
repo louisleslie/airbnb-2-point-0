@@ -1,28 +1,91 @@
 <div class="infowindow-container">
 
-
-
   <% if property.user == current_user %>
     <div class="card-ribbon card-ribbon-top-left"><span>Yours</span></div>
   <% end %>
 
   <div class="infowindow-image-container">
-    <%= cl_image_tag property.photos[0].key, class:"card-image", cloud_name: "dmdajbspi" %>
-</div>
 
-  <div class="infowindow-content">
-    <div class="infowindow-reviews">⭐<span class="infowindow-review-count"><span class="infowindow-review-average">4.8</span> (34)</span></div>
-    <h3 class='infowindow-title'><%= property.name %></h3>
-    <p class='infowindow-subtitle'><% if property.has_kitchen %> · Kitchen   <% end %>
+ <%= cl_image_tag property.photos[0].key, class:"infowindow-image", cloud_name: "dmdajbspi" %>
 
-        <% if property.has_tv %> · TV   <% end %>
-
-        <% if property.has_heating %> · Heating   <% end %>
-
-        <% if property.has_aircon %> · Air con  <% end %></p>
-      </p>
-      <a><%= link_to "View property", property_path(property), class: "infowindow-link"%></a>
   </div>
 
+  <div class="infowindow-contents">
 
+    <div class="card-badges">
+
+      <div class="card-tabs">
+      <% if property.has_internet  %>
+        <p class="card-badge">
+          WIFI
+        </p>
+      <% end %>
+
+      <p class="card-supertitle"><%= property.total_bedrooms %> BED<% if property.total_bedrooms > 1 %>S<% end %> · <%= property.total_bathrooms %> BATH<% if property.total_bathrooms > 1 %>S<% end %></p>
 </div>
+      <div class="card-buttons-container">
+
+
+        <% if property.user == current_user %>
+        <div class="button-container">
+          <%= link_to edit_property_path(property) do %>
+            <%= image_tag 'edit.svg', class: 'button edit-button'%>
+          <% end %>
+        </div>
+        <% end %>
+
+        <% if property.user == current_user %>
+        <div class="button-container">
+          <%= link_to property_path(property), method: "delete", data: { confirm: "Remove This Property?" } do%>
+            <%= image_tag 'delete.svg', class: 'button delete-button'%>
+          <% end %>
+        </div>
+        <% end %>
+
+        <% if property.user != current_user %>
+        <div class="button-container">
+          <%= link_to properties_path, class: '' do %>
+            <%= image_tag 'favourite.svg', class: 'button favourite-button'%>
+          <% end %>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+
+    <h2 class='card-title infowindow-title'><%= property.name %></h2>
+    <p class='card-subtitle'><%= property.address %></p>
+
+
+    <div class="card-details">
+
+      <a><%= link_to "View property", property_path(property), class: "card-link"%></a>
+
+      <div class="card-metadata">
+        <p class="card-price"><span class="card-price-number"><span class="review-score">£<%= property.price_per_night %> </span></span><span class="card-price-unit">/<span class="card-price-small">night</span></span></p>
+        <div class="card-reviews">⭐<span class="card-review-count"><span class="review-score">4.7 </span>(34)</span></div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <script>
+    var animateButton = function(e) {
+
+      e.preventDefault;
+  //reset animation
+  e.target.classList.remove('animate');
+
+  e.target.classList.add('animate');
+  setTimeout(function(){
+    e.target.classList.remove('animate');
+  },700);
+};
+
+var classname = document.getElementsByClassName("confetti-button");
+
+for (var i = 0; i < classname.length; i++) {
+  classname[i].addEventListener('click', animateButton, false);
+}
+</script>
