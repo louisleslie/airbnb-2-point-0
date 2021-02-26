@@ -1,7 +1,16 @@
-<div class="container">
-  <ul>
-    <% @properties.each do |property| %>
-      <li><%= link_to property.address, property_path(property) %></li>
-    <% end %>
-  </ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 cards-container m-auto">
+
+      <h2 class="users-index-title my-4">Your Properties</h2>
+
+      <% @properties.each_with_index do |property, index| %>
+
+        <%= render partial: 'shared/card', locals: { property: property, index: property.id }%>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
 </div>

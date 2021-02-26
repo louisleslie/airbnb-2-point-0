@@ -1,0 +1,39 @@
+.infowindow-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 220px;
+}
+
+.infowindow-image-container {
+  padding: 4px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.infowindow-image {
+  height: 80px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.infowindow-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 8px;
+  padding-left: 8px;
+}
+
+.review-score {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.infowindow-title {
+  font-size: 14px;
+}
+
+.infowindow-badges {
+  font-size: 12px;
+}
