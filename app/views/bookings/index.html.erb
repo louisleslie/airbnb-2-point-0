@@ -58,14 +58,14 @@
                 <p>Status: <%= booking.status %></p>
                 <% if booking.status != "Pending" %>
                   <%= link_to booking_path(id: booking.id, booking: {status: "Declined"}), method: :patch do %>
-                    Decline
+                    <div class="d-flex align-items-center"><%= image_tag 'x-circle.svg', class: 'favourite-button-red'%> <p>Cancel</p></div>
                   <% end %>
                 <% else %>
                   <%= link_to booking_path(id: booking.id, booking: {status: "Approved"}), method: :patch do %>
-                    Approve
+                    <div class="d-flex align-items-center"><%= image_tag 'check-circle.svg', class: 'favourite-button-red'%> <p>Approve</p></div>
                   <% end %>
                   <%= link_to booking_path(id: booking.id, booking: {status: "Declined"}), method: :patch do %>
-                    Decline
+                    <div class="d-flex align-items-center"><%= image_tag 'x-circle.svg', class: 'favourite-button-red'%><p>Decline</p></div>
                   <% end %>
                   
                 <% end %>
