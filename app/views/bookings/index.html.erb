@@ -57,25 +57,17 @@
               <p class='card-details'><%= booking.property.summary %></p>
                 <p>Status: <%= booking.status %></p>
                 <% if booking.status != "Pending" %>
-                  <%= simple_form_for booking_path([booking, property]), method: :patch do |f| %>
-                    <%= f.hidden_field :start_date, value: booking.start_date %>
-                    <%= f.hidden_field :end_date, value: booking.end_date %>
-                    <%= f.hidden_field :status, value: "Declined" %>
-                    <%= f.submit :status, value: "Decline", name: "Decline" %>
+                  <%= link_to booking_path(id: booking.id, booking: {status: "Declined"}), method: :patch do %>
+                    Decline
                   <% end %>
                 <% else %>
-                  <%= simple_form_for booking_path(booking.id), method: :patch do |f| %>
-                    <%= f.hidden_field :start_date, value: booking.start_date %>
-                    <%= f.hidden_field :end_date, value: booking.end_date %>
-                    <%= f.hidden_field :status, value: "Approved" %>
-                    <%= f.submit :status, value: "Approve", name: "Approve" %>
+                  <%= link_to booking_path(id: booking.id, booking: {status: "Approved"}), method: :patch do %>
+                    Approve
                   <% end %>
-                  <%= simple_form_for booking_path(booking.id), method: :patch do |f| %>
-                    <%= f.hidden_field :start_date, value: booking.start_date %>
-                    <%= f.hidden_field :end_date, value: booking.end_date %>
-                    <%= f.hidden_field :status, value: "Declined" %>
-                    <%= f.submit :status, value: "Decline", name: "Decline" %>
+                  <%= link_to booking_path(id: booking.id, booking: {status: "Declined"}), method: :patch do %>
+                    Decline
                   <% end %>
+                  
                 <% end %>
               </div>
             </div>
