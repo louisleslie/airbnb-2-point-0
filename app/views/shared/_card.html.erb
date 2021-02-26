@@ -43,11 +43,19 @@
         <% end %>
 
         <% if property.user != current_user %>
-        <div class="button-container">
-          <%= link_to properties_path, class: '' do %>
-            <%= image_tag 'favourite.svg', class: 'button favourite-button'%>
+          <% if (current_user.favourite_ids & property.favourite_ids).any? %>
+            <div class="button-container">
+              <%= link_to property_favourite_path(property, id: current_user.favourites.where(property_id: property.id).first.id), method: :delete, remote: true, id: "remove-favourite" do %>
+                <%= image_tag 'filled-favourite.svg', class: 'favourite-button-red'%>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="button-container">
+              <%= link_to property_favourites_path(property), method: :post, remote: true, id: "add-favourite"  do %>
+                <%= image_tag 'favourite.svg', class: 'favourite-button'%>
+              <% end %>
+            </div>
           <% end %>
-        </div>
         <% end %>
 
       </div>
