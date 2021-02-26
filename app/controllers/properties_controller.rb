@@ -22,7 +22,7 @@ class PropertiesController < ApplicationController
 
   def destroy
     @property.destroy
-    redirect_to properties_path
+    redirect_to user_properties_path(@property.user_id)
   end
 
   def users_index

@@ -44,12 +44,15 @@
     </div>
   </div>
   <div class="d-flex flex-wrap justify-content-between">
+
     <div class="property-details" style="width: 50%; padding: 10px; background-color: white;  border-radius: 8px;">
       <h3><strong>£<%= @property.price_per_night.round(2) %></strong> / night</h3>
       <p><strong>Hosted by:</strong> <%= @property.user.first_name %> <%= @property.user.last_name %></p>
+
       <p><%= @property.summary %></p>
       <div class="card-spacer"></div>
       <p><%= @property.address %></p>
+
       <div class="card-spacer"></div>
       <p>Bedrooms: <%= @property.total_bedrooms %></p>
       <p>Bathrooms: <%= @property.total_bathrooms %></p>
@@ -61,6 +64,7 @@
         <li <%= @property.has_aircon ? "" : 'style=color:grey;' %>><%= @property.has_aircon ? "😊 Has Air Con" : "😞 No Air Con" %></li>
         <li  <%= @property.has_heating ? "" : 'style=color:grey;' %>><%= @property.has_heating ? "😊 Has Heating" : "😞 No Heating" %></li>
       </ul>
+      </div>
     </div>
     <% if current_user == @property.user %>
       <div class="owner-controls" style="width: 50%; padding: 10px; background-color: white; border-radius: 8px;">
@@ -86,7 +90,6 @@
      <div class="mt-2"> <p><strong><%= review.rating %></strong> ⭐  <strong>Reviewed by</strong>
       <%="#{review.booking.user.first_name} #{review.booking.user.last_name}"%>
       </p></div>
-     
       <div><%= review.content %></div>
     </div>
     <% end %>
