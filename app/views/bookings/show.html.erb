@@ -54,7 +54,7 @@
         <h1>Reviews of the property</h1>
         <% numberofreviews = @booking.reviews.count %>
         <% sumofreviewratings = @booking.reviews.map(&:rating).sum %>
-        <% unless @booking.reviews.nil? %>
+        <% if numberofreviews > 0 %>
           <h2>Overall rating of the property is <%= sumofreviewratings.fdiv(numberofreviews) %> </h2>
           <% else %>
           <h2>This property has not been reviewed yet.</h2>
