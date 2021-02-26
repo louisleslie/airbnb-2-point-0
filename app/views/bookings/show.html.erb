@@ -68,18 +68,15 @@
           <div><%= review.content %></div>
           <% if user_signed_in? && review.booking.user == current_user %>
             <%= link_to "Edit your review", edit_review_path(review) , class: "btn btn-warning"  %>
-            <%= link_to "Delete your review", review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: "Remove This Property?" } %>
+            <%= link_to "Delete your review", review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: "Remove This review ?" } %>
           <% end %>
         <% end %>
       </div>
-      <%# we should render the form conditionally %>
       <% if @booking.user == current_user && @booking.reviews.size == 0 %>
         <div class="show-review-form">
           <%= render  partial: 'reviews/review_form', locals: {review: @review, booking: @booking} %>
-          
         </div>
       <% end %>
-      <%# i should add edit button conditionally! %>
       <%= link_to "Back to your bookings", bookings_path, class: 'form-button-secondary-text' %>
       </div>
     </div>
