@@ -7,7 +7,7 @@
   <% end %>
 
   <div class="infowindow-image-container">
-    <img src="https://source.unsplash.com/random?sig=<%= property.id %>/&appartment" alt="" class="infowindow-image">
+    <%= cl_image_tag property.photos[0].key, class:"card-image", cloud_name: "dmdajbspi" %>
 </div>
 
   <div class="infowindow-content">

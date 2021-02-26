@@ -23,7 +23,6 @@
   width: 75px; height: 75px;
   text-align: right;
 }
-
 .card-ribbon span {
   font-size: 10px;
   font-weight: bold;
@@ -84,6 +83,13 @@
   padding-left: 16px;
 }
 
+.card-tabs {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+
+}
+
 .card-badges {
   display: flex;
   align-items: center;
@@ -92,7 +98,7 @@
   font-weight: 500;
   position: relative;
   height: 32px;
-  border: 1px solid green;
+
 }
 
 .card-badge {
@@ -111,9 +117,9 @@
 .card-buttons-container {
   display: flex;
   align-items: center;
-  padding: 2px;
-  border: 1px solid red;
+
   margin-left: auto;
+  margin-top: -16px;
 }
 
 .button-container {
@@ -123,13 +129,15 @@
   width: 24px;
   justify-content: center;
   padding: 8px;
-  border: 1px solid blue;
+
 }
 
 .button {
   color: $dark-grey;
   transition: all .2s ease-in-out;
-  padding: 4px;
+  height: 16px;
+  width: 16px;
+
 
   &:hover {
     transform: scale(1.2);
@@ -220,6 +228,11 @@
 .card-price-small {
   font-size: 12px;
   color: $dark-grey;
+}
+
+.card-reviews {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 

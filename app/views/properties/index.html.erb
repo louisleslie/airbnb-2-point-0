@@ -9,7 +9,6 @@
       <% @properties.each_with_index do |property, index| %>
 
         <%= render partial: 'shared/card', locals: { property: property, index: property.id }%>
-       <%= render partial: 'properties/info_window', locals: { property: property, index: property.id } %>
 
       <% end %>
 
