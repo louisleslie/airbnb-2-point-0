@@ -34,6 +34,10 @@ class PropertiesController < ApplicationController
       if params[:query].present?
         coordinates = Geocoder.search(params[:query]).first.coordinates
         @properties = Property.near(coordinates, 50)
+        # if @properties.empty?
+        #   @search_success = false
+        #   @properties = Property.all
+        # end
       else
         @properties = Property.all
       end
