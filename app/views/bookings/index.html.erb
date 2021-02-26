@@ -56,6 +56,27 @@
               <p class='card-details mt-2'><%= booking.property.address %></p>
               <p class='card-details'><%= booking.property.summary %></p>
                 <p>Status: <%= booking.status %></p>
+                <% if booking.status != "Pending" %>
+                  <%= simple_form_for booking_path([booking, property]), method: :patch do |f| %>
+                    <%= f.hidden_field :start_date, value: booking.start_date %>
+                    <%= f.hidden_field :end_date, value: booking.end_date %>
+                    <%= f.hidden_field :status, value: "Declined" %>
+                    <%= f.submit :status, value: "Decline", name: "Decline" %>
+                  <% end %>
+                <% else %>
+                  <%= simple_form_for booking_path(booking.id), method: :patch do |f| %>
+                    <%= f.hidden_field :start_date, value: booking.start_date %>
+                    <%= f.hidden_field :end_date, value: booking.end_date %>
+                    <%= f.hidden_field :status, value: "Approved" %>
+                    <%= f.submit :status, value: "Approve", name: "Approve" %>
+                  <% end %>
+                  <%= simple_form_for booking_path(booking.id), method: :patch do |f| %>
+                    <%= f.hidden_field :start_date, value: booking.start_date %>
+                    <%= f.hidden_field :end_date, value: booking.end_date %>
+                    <%= f.hidden_field :status, value: "Declined" %>
+                    <%= f.submit :status, value: "Decline", name: "Decline" %>
+                  <% end %>
+                <% end %>
               </div>
             </div>
           <% end %>
