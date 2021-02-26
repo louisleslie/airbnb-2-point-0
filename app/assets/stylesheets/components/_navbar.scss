@@ -10,3 +10,46 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.sign-in {
+  display: inline-block;
+  color: $pink;
+  border: 2px solid $pink;
+  background-color: white;
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all .2s ease-in-out;
+  text-decoration: none;
+  margin-left: 12px;
+
+  &:hover {
+    transform: scale(1.05);
+    text-decoration: none;
+    color: $dark-pink;
+    border: 2px solid $dark-pink;
+  }
+
+}
+
+.sign-up {
+  display: inline-block;
+  color: white;
+  background-color: $pink;
+  border: none;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all .2s ease-in-out;
+  text-decoration: none;
+  margin-left: 12px;
+
+  &:hover {
+    background-color: $dark-pink;
+    transform: scale(1.05);
+    text-decoration: none;
+    color: white;
+  }
+}
