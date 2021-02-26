@@ -4,7 +4,7 @@
       <span class="show-status-badge">
         <%= @booking.status %>
       </span>
-      <h1><%= @booking.property.name %> </h1>
+      <h1><%= link_to @booking.property.name, property_path(@booking.property.id), class: "pink" %></h1>
       <div class="show-badges">
 
         <p class='show-badge'><%= @booking.start_date.to_datetime.strftime("%d %B %Y") %> - <%= @booking.end_date.to_datetime.strftime("%d %B %Y") %> · <%= @booking.property.address %> · <%= @booking.property.user.first_name %>  <%= @booking.property.user.last_name %></p>
