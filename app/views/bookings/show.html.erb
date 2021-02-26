@@ -49,11 +49,40 @@
 
             <% if @booking.property.has_aircon %> · Air con  <% end %></p>
       </div>
-      <div class="show-review-form">
-         <%= render  partial: 'reviews/review_form', locals: {review: @review, booking: @booking} %>
-         <%= link_to "Back to your bookings", bookings_path, class: 'form-button-secondary-text' %>
+      
+      <div class="mt-2 py-2 background-color: white justify-content-between" style="border: 2px solid; border-radius: 10px; text-align: center; align-item:center; margin-bottom:15px;">
+        <h1>Reviews of the property</h1>
+        <% numberofreviews = @booking.reviews.count %>
+        <% sumofreviewratings = @booking.reviews.map(&:rating).sum %>
+        <% unless @booking.reviews.nil? %>
+          <h2>Overall rating of the property is <%= sumofreviewratings.fdiv(numberofreviews) %> </h2>
+          <% else %>
+          <h2>This property has not been reviewed yet.</h2>
+          <% end %>
+        <% @booking.reviews.each do |review| %>
+          <div class="mt-2">
+            <p><%= review.rating %> stars Reviewed by
+              <strong><%="#{review.booking.user.first_name} #{review.booking.user.last_name}"%></strong>
+            </p>
+          </div>
+          <div><%= review.content %></div>
+          <% if user_signed_in? && review.booking.user == current_user %>
+            <%= link_to "Edit your review", edit_review_path(review) , class: "btn btn-warning"  %>
+            <%= link_to "Delete your review", review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: "Remove This Property?" } %>
+          <% end %>
+        <% end %>
       </div>
-
+      <%# we should render the form conditionally %>
+      <% if @booking.user == current_user && @booking.reviews.size == 0 %>
+        <div class="show-review-form">
+          <%= render  partial: 'reviews/review_form', locals: {review: @review, booking: @booking} %>
+          
+        </div>
+      <% end %>
+      <%# i should add edit button conditionally! %>
+      <%= link_to "Back to your bookings", bookings_path, class: 'form-button-secondary-text' %>
+      </div>
     </div>
   </div>
+</div>
 </div>
