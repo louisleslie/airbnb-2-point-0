@@ -23,7 +23,6 @@
   width: 75px; height: 75px;
   text-align: right;
 }
-
 .card-ribbon span {
   font-size: 10px;
   font-weight: bold;
@@ -220,6 +219,11 @@
 .card-price-small {
   font-size: 12px;
   color: $dark-grey;
+}
+
+.card-reviews {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 
