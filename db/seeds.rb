@@ -188,7 +188,7 @@ users.each do |user|
     count = 0
     3.times do
       count += 1
-      url = "https://source.unsplash.com/random?sig=#{rand(1..60)}/&apartment"
+      url = "https://source.unsplash.com/random?sig=#{rand(1..60)}/&apartment/800x600"
       file = URI.open(url)
       property.photos.attach(io: file, filename: "#{name.gsub(" ", "-")}-#{count}.jpeg", content_type: 'image/jpeg')
     end  
