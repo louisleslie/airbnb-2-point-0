@@ -3,6 +3,7 @@
   <%= link_to "Back to Properties", properties_path %>
   <div class="d-flex justify-content-between">
     <h1><%= "#{@property.name}"%></h1>
+    
     <% if (current_user.favourite_ids & @property.favourite_ids).any? %>
       <div class="button-container">
         <%= link_to property_favourite_path(@property), method: :delete, remote: true, id: "remove-favourite" do %>
@@ -17,7 +18,7 @@
       </div>
     <% end %>
   </div>
-  <div class="container" style="height: 75vh; background-color: white;">
+  <div class="container" style="height: 75vh; background-color: white; border-radius: 8px;">
     <div id="propertyCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <% counter = 0 %>
@@ -43,16 +44,21 @@
     </div>
   </div>
   <div class="d-flex flex-wrap justify-content-between">
-    <div class="property-details" style="width: 50%; padding: 10px; background-color: white;">
-    <div style = "border: 2px solid black; box-shadow: 5px 10px; text-align:center text-align:left; margin-left:2px; padding:2px; border-radius:2px;"> 
+
+    <div class="property-details" style="width: 50%; padding: 10px; background-color: white;  border-radius: 8px;">
       <h3><strong>£<%= @property.price_per_night.round(2) %></strong> / night</h3>
-      <p>Hosted by: <%= @property.user.first_name %> <%= @property.user.last_name %></p> 
+      <p><strong>Hosted by:</strong> <%= @property.user.first_name %> <%= @property.user.last_name %></p>
+
       <p><%= @property.summary %></p>
+      <div class="card-spacer"></div>
       <p><%= @property.address %></p>
+
+      <div class="card-spacer"></div>
       <p>Bedrooms: <%= @property.total_bedrooms %></p>
       <p>Bathrooms: <%= @property.total_bathrooms %></p>
       <p>Max Guests: <%= @property.total_occupancy %></p>
-      <ul class="property-feature-list" style= "list-style:none;">
+      <div class="card-spacer"></div>
+      <ul class="property-feature-list" style="list-style: none;">
         <li <%= @property.has_kitchen ? "" : 'style=color:grey;' %>><%= @property.has_kitchen ? '😊 Has a Kitchen' : '😞 No Kitchen' %></li>
         <li <%= @property.has_internet ? "" : 'style=color:grey;' %>><%= @property.has_internet ? "😊 Has Internet" : "😞 No Internet" %></li>
         <li <%= @property.has_aircon ? "" : 'style=color:grey;' %>><%= @property.has_aircon ? "😊 Has Air Con" : "😞 No Air Con" %></li>
@@ -61,34 +67,35 @@
       </div>
     </div>
     <% if current_user == @property.user %>
-      <div class="owner-controls" style="width: 50%; padding: 10px; background-color: white;">
+      <div class="owner-controls" style="width: 50%; padding: 10px; background-color: white; border-radius: 8px;">
         <h2>You own this property</h2>
         <%= link_to "Edit", edit_property_path(@property), class: "btn btn-success" %>
         <%= link_to "Delete", property_path(@property), method: "delete", class: "btn btn-danger", data: { confirm: "Remove This Property?" }%>
-      <div>
+      </div>
     <% else %>
-      <div class="booking-form" style="width: 50%; padding: 10px; background-color: white;">
+      <div class="booking-form" style="width: 50%; padding: 10px; background-color: white; border-radius: 8px;">
         <h2>Booking Form</h2>
         <%= render "bookings/booking_form", property: @property, booking: @booking %>
       </div>
     <% end %>
     </div>
-     <div class="mt-2 py-2 background-color: white justify-content-between">
-    <h1>Reviews of the property</h1>
-    <% numberofreviews = @property.reviews.count %>
-    <% sumofreviewratings = @property.reviews.map(&:rating).sum %>
-    <% if numberofreviews >0 %>
-    <h2>Overall rating of the property is <%= sumofreviewratings.fdiv(numberofreviews) %> </h2>
-    <% else %>
+    <div class="mt-2 py-2 justify-content-between">
+      <h1>Reviews of the property</h1>
+      <% numberofreviews = @property.reviews.count %>
+      <% sumofreviewratings = @property.reviews.map(&:rating).sum %>
+      <% unless @property.reviews.nil? %>
+      <h2>Average rating: <%= sumofreviewratings.fdiv(numberofreviews) %> ⭐</h2>
+      <% @property.reviews.each do |review| %>
+        <div class="review-container my-2">
+          <div class="mt-2"> <p><strong><%= review.rating %></strong> ⭐  <strong>Reviewed by</strong>
+            <%="#{review.booking.user.first_name} #{review.booking.user.last_name}"%></p>
+            </div>
+      <div><%= review.content %></div>
+    </div>
+    <% end %>
+     </div>
+     <% else %>
     <h2>This property has not been reviewed yet.</h2>
     <% end %>
-    <div style ="border:solid 2px grey; padding: 4px; margin: 2px auto;">
-    <% @property.reviews.each do |review| %>
-     <div class="mt-2"> <p><%= review.rating %> stars Reviewed by
-      <strong><%="#{review.booking.user.first_name} #{review.booking.user.last_name}"%></strong> 
-      </p></div>
-      <div><%= review.content %></div>
-  <% end %>
-  </div>
-     </div>
 </div>
+
