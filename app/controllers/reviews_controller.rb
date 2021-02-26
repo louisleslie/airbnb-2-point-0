@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
 
   before_action :set_review, only: [:edit, :destroy, :update]
   def edit # no need to write anything inside due to before action
+    @booking = @review.booking
   end
 
   def new
@@ -22,11 +23,13 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    @booking = @review.booking
     @review.update(review_params)
-    redirect_to review_path(@review)
+    redirect_to booking_path(@booking)
   end
   
   def destroy 
+    @booking = @review.booking
     @review.destroy
     redirect_to booking_path(@booking)
   end

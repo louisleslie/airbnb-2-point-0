@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="section mt-2">
     <h1>Your Booking information for this property</h1>
     <p>Your reservation address: <%= @booking.property.address %></p>
@@ -19,11 +18,11 @@
         <p>Your booking start date: <%= @booking.start_date %></p>
       </li>
       <li></li>
-       end date: <%= @booking.end_date %> </p>
+      end date: <%= @booking.end_date %> </p>
   </li>
   <li>
     <p>total cost of the reservation: <%= @booking.total_cost %>£</p>
-     </li>
+  </li>
   <% unless @booking.price_per_night.nil? %>
     <li>
       <p>price per night: <%= @booking.price_per_night %></p>
@@ -38,10 +37,31 @@
     <h1>wish you have a good experience with us!</h1>
   </li>
 </ul>
+<div class="mt-2 py-2 background-color: white justify-content-between" style="border: 2px solid; border-radius: 10px; text-align: center; align-item:center; margin-bottom:15px;">
+  <h1>Reviews of the property</h1>
+  <% numberofreviews = @booking.reviews.count %>
+  <% sumofreviewratings = @booking.reviews.map(&:rating).sum %>
+  <h2>Overall rating of the property is <%= sumofreviewratings.fdiv(numberofreviews) %> out of 5.0 </h2>
+  <% @booking.reviews.each do |review| %>
+    <div class="mt-2">
+      <p><%= review.rating %> stars Reviewed by
+        <strong><%="#{review.booking.user.first_name} #{review.booking.user.last_name}"%></strong>
+      </p>
+    </div>
+    <div><%= review.content %></div>
+    <% if user_signed_in? && review.booking.user = current_user %>
+      <%= link_to "edit your review", edit_review_path(review) , class: "btn btn-warning"  %>
+      <%= link_to "Delete your review", review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: "Remove This Property?" } %>
+    <% end %>
+  <% end %>
+</div>
+<%# we should render the form conditionally %>
+<%# <% if @booking.user_id = @booking.review.user_id %>
 <div>
   <%= render  partial: 'reviews/review_form', locals: {review: @review, booking: @booking} %>
 </div>
-<%= link_to "Back to your bookings", bookings_path, class: "btn btn-success" %>
+<%# <% end %>
+<%# i should add edit button conditionally! %>
+<%= link_to "Back to your bookings", bookings_path, class: "btn btn-success", input_html:{}  %>
 </div>
 </div>
-
