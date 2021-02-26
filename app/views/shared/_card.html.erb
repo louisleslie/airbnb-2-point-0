@@ -1,6 +1,6 @@
 <div class="card-container">
 
-  <% if property.user == current_user %>
+  <% if property.user == current_user && action_name != "users_index" %>
     <div class="card-ribbon card-ribbon-top-left"><span>Yours</span></div>
   <% end %>
 
@@ -63,7 +63,6 @@
 
     <h2 class='card-title'><%= property.name %></h2>
     <p class='card-subtitle'><%= property.address %></p>
-
 
     <div class="card-spacer"></div>
 
