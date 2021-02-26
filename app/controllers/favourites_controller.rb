@@ -12,6 +12,7 @@ class FavouritesController < ApplicationController
         image_url: helpers.asset_path("map-pin.svg")
       }
     end
+    @search_success = true
     render 'properties/index'
   end
 
