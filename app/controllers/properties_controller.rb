@@ -38,7 +38,7 @@ class PropertiesController < ApplicationController
         @properties = Property.all
       end
     end
-    raise
+    
     @markers = @properties.geocoded.map do |property|
       {
         lat: property.latitude,
