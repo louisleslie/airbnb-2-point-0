@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container col-md-8">
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
@@ -11,14 +11,14 @@
 
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="my-bookings-tab">
-      <h1>My Bookings</h1>
       <% if @bookings.empty? %>
-        <%= link_to 'Book your first trip now', properties_path, class: "card-title pink" %>
+        <%= link_to 'Book your first trip now', properties_path, class: "form-button-primary my-5 mx-auto" %>
       <% else %>
+      <h2 class='my-3'>My Bookings</h2>
         <% @bookings.each do |booking| %>
           <div class="card-container">
             <div class="card-image-container smaller-image-container">
-              <%= image_tag 'https://a0.muscache.com/im/pictures/7d80bee1-a510-4950-a1a0-07a4fb25ec2e.jpg?im_q=medq&im_w=240', class: "card-image" %>
+              <%= cl_image_tag booking.property.photos[0].key, class:"card-image", cloud_name: "dmdajbspi" %>
             </div>
             <div class="card-contents">
               <%= link_to booking.property.name , booking_path(booking), class: "card-title pink" %>
@@ -26,9 +26,9 @@
               <% start_date = start_date_time_obj.strftime("%d %B %Y") %>
               <% end_date_time_obj = booking.end_date.to_datetime %>
               <% end_date = end_date_time_obj.strftime("%d %B %Y") %>
-              <p class=card-subtitle><%= start_date %> - <%= end_date %></p>
-              <p><%= booking.property.summary %></p>
-              <p><%= booking.property.address %></p>
+              <p class="card-subtitle"><%= start_date %> - <%= end_date %></p>
+              <p class='card-details mt-2'><%= booking.property.address %></p>
+              <p class='card-details'><%= booking.property.summary %></p>
               <p>Status: <%= booking.status %></p>
             </div>
           </div>
@@ -36,15 +36,15 @@
       <% end %>
     </div>
     <div class="tab-pane fade" id="property-bookings-tab">
-      <h1>My Property Bookings</h1>
       <% if @properties.empty? %>
         <%= link_to "Add a property to get bookings", new_property_path, class: "card-title pink" %>
       <% else %>
+      <h2 class='my-3'>My Property Bookings</h2>
         <% @properties.each do |property| %>
           <% property.bookings.each do |booking| %>
             <div class="card-container">
               <div class="card-image-container smaller-image-container">
-                <%= image_tag 'https://a0.muscache.com/im/pictures/7d80bee1-a510-4950-a1a0-07a4fb25ec2e.jpg?im_q=medq&im_w=240', class: "card-image" %>
+                <%= cl_image_tag booking.property.photos[0].key, class:"card-image", cloud_name: "dmdajbspi" %>
               </div>
               <div class="card-contents">
                 <%= link_to property.name , property_path(property), class: "card-title pink" %>
@@ -53,8 +53,8 @@
                 <% end_date_time_obj = booking.end_date.to_datetime %>
                 <% end_date = end_date_time_obj.strftime("%d %B %Y") %>
                 <p class="card-subtitle"><%= start_date %> - <%= end_date %></p>
-                <p><%= booking.property.summary %></p>
-                <p><%= booking.property.address %></p>
+              <p class='card-details mt-2'><%= booking.property.address %></p>
+              <p class='card-details'><%= booking.property.summary %></p>
                 <p>Status: <%= booking.status %></p>
               </div>
             </div>
