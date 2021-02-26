@@ -66,6 +66,10 @@
   object-fit: cover;
 }
 
+.smaller-image-container {
+  width: 25%;
+}
+
 .card-image {
   border-radius: 8px;
   width: 100%;
@@ -327,3 +331,12 @@ bottomBubbles {  0% {
  background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
 }
 }
+
+.pink {
+  color: $pink;
+  
+  &:hover {
+    color: $dark-pink;
+  }
+}
+
