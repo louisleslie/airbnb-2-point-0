@@ -43,7 +43,7 @@
             <%= link_to "Trips", "/users/:user_id/bookings", class: "dropdown-item" %>
             <%= link_to "Bookings", "/bookings", class: "dropdown-item" %>
 
-            <% if current_user.properties %>
+            <% if current_user.properties.size > 0 %>
               <%= link_to "Properties", "/users/:user_id/properties", class: "dropdown-item" %>
               <% else %>
               <%= link_to "Host a Home", "/properties/new", class: "dropdown-item" %>
