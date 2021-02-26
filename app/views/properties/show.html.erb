@@ -46,13 +46,18 @@
     <div class="property-details" style="width: 50%; padding: 10px; background-color: white;">
     <div style = "border: 2px solid black; box-shadow: 5px 10px; text-align:center text-align:left; margin-left:2px; padding:2px; border-radius:2px;"> 
       <h3><strong>£<%= @property.price_per_night.round(2) %></strong> / night</h3>
-      <p>Hosted by: <%= @property.user.first_name %> <%= @property.user.last_name %></p> 
+      <p><strong>Hosted by:</strong> <%= @property.user.first_name %> <%= @property.user.last_name %></p>
+
       <p><%= @property.summary %></p>
+      <div class="card-spacer"></div>
       <p><%= @property.address %></p>
+
+      <div class="card-spacer"></div>
       <p>Bedrooms: <%= @property.total_bedrooms %></p>
       <p>Bathrooms: <%= @property.total_bathrooms %></p>
       <p>Max Guests: <%= @property.total_occupancy %></p>
-      <ul class="property-feature-list" style= "list-style:none;">
+      <div class="card-spacer"></div>
+      <ul class="property-feature-list" style="list-style: none;">
         <li <%= @property.has_kitchen ? "" : 'style=color:grey;' %>><%= @property.has_kitchen ? '😊 Has a Kitchen' : '😞 No Kitchen' %></li>
         <li <%= @property.has_internet ? "" : 'style=color:grey;' %>><%= @property.has_internet ? "😊 Has Internet" : "😞 No Internet" %></li>
         <li <%= @property.has_aircon ? "" : 'style=color:grey;' %>><%= @property.has_aircon ? "😊 Has Air Con" : "😞 No Air Con" %></li>
@@ -73,22 +78,24 @@
       </div>
     <% end %>
     </div>
-     <div class="mt-2 py-2 background-color: white justify-content-between">
-    <h1>Reviews of the property</h1>
-    <% numberofreviews = @property.reviews.count %>
-    <% sumofreviewratings = @property.reviews.map(&:rating).sum %>
-    <% if numberofreviews >0 %>
-    <h2>Overall rating of the property is <%= sumofreviewratings.fdiv(numberofreviews) %> </h2>
-    <% else %>
+     <div class="mt-2 py-2 justify-content-between">
+      <h2>Reviews of the property</h2>
+      <% numberofreviews = @property.reviews.count %>
+      <% sumofreviewratings = @property.reviews.map(&:rating).sum %>
+      <% unless @property.reviews.nil? %>
+      <h2>Average rating: <%= sumofreviewratings.fdiv(numberofreviews) %> ⭐</h2>
+      <% @property.reviews.each do |review| %>
+        <div class="review-container my-2">
+          <div class="mt-2"> <p><strong><%= review.rating %></strong> ⭐  <strong>Reviewed by</strong>
+            <%="#{review.booking.user.first_name} #{review.booking.user.last_name}"%></p>
+            </div>
+      <div><%= review.content %></div>
+    </div>
+    <% end %>
+     </div>
+     <% else %>
     <h2>This property has not been reviewed yet.</h2>
     <% end %>
-    <div style ="border:solid 2px grey; padding: 4px; margin: 2px auto;">
-    <% @property.reviews.each do |review| %>
-     <div class="mt-2"> <p><%= review.rating %> stars Reviewed by
-      <strong><%="#{review.booking.user.first_name} #{review.booking.user.last_name}"%></strong> 
-      </p></div>
-      <div><%= review.content %></div>
-  <% end %>
   </div>
      </div>
 </div>
