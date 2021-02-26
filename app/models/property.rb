@@ -1,8 +1,8 @@
 class Property < ApplicationRecord
   belongs_to :user
-  has_many :bookings, dependent: :destroy
   has_many :favourites, dependent: :destroy
-  has_many :reviews, through: :bookings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :bookings, dependent: :destroy
   has_many_attached :photos, dependent: :destroy
   geocoded_by :address
   validates :name, presence: true

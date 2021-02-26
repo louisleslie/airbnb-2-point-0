@@ -1,4 +1,10 @@
-<div class="container">
-    <h1>Edit your review.</h1>
-    <% render 'review_form', review: @review %>
+<div class="form-container" id="property-form">
+  <%= simple_form_for  @review, method: :patch do |f| %>
+    <h3>Please leave your review!</h3>
+    <div class= "form-group">
+      <%= f.input :content, input_html:{class: "form-control"}  %>
+      <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html:{class: "form-control",id: "review_rating"}  %>
+      <%= f.submit "Send your review" %>
+    </div>
+  <% end %>
 </div>

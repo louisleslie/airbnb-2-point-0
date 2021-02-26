@@ -66,6 +66,10 @@
   object-fit: cover;
 }
 
+.smaller-image-container {
+  width: 25%;
+}
+
 .card-image {
   border-radius: 8px;
   width: 100%;
@@ -83,6 +87,13 @@
   padding-left: 16px;
 }
 
+.card-tabs {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+
+}
+
 .card-badges {
   display: flex;
   align-items: center;
@@ -91,7 +102,7 @@
   font-weight: 500;
   position: relative;
   height: 32px;
-  border: 1px solid green;
+
 }
 
 .card-badge {
@@ -110,9 +121,9 @@
 .card-buttons-container {
   display: flex;
   align-items: center;
-  padding: 2px;
-  border: 1px solid red;
+
   margin-left: auto;
+  margin-top: -16px;
 }
 
 .button-container {
@@ -122,13 +133,15 @@
   width: 24px;
   justify-content: center;
   padding: 8px;
-  border: 1px solid blue;
+
 }
 
 .button {
   color: $dark-grey;
   transition: all .2s ease-in-out;
-  padding: 4px;
+  height: 16px;
+  width: 16px;
+
 
   &:hover {
     transform: scale(1.2);
@@ -318,3 +331,16 @@ bottomBubbles {  0% {
  background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
 }
 }
+
+.pink {
+  color: $pink;
+  
+  &:hover {
+    color: $dark-pink;
+  }
+}
+
+.no-margin {
+  margin: 0;
+}
+
