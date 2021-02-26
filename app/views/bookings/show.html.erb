@@ -41,7 +41,11 @@
   <h1>Reviews of the property</h1>
   <% numberofreviews = @booking.reviews.count %>
   <% sumofreviewratings = @booking.reviews.map(&:rating).sum %>
-  <h2>Overall rating of the property is <%= sumofreviewratings.fdiv(numberofreviews) %> out of 5.0 </h2>
+  <% unless @booking.reviews.nil? %>
+    <h2>Overall rating of the property is <%= sumofreviewratings.fdiv(numberofreviews) %> </h2>
+    <% else %>
+    <h2>This property has not been reviewed yet.</h2>
+    <% end %>
   <% @booking.reviews.each do |review| %>
     <div class="mt-2">
       <p><%= review.rating %> stars Reviewed by
@@ -56,7 +60,7 @@
   <% end %>
 </div>
 <%# we should render the form conditionally %>
-<%# <% if @booking.user_id = @booking.review.user_id %>
+<%# <% user_signed_in? && review.booking.user = current_user %>
 <div>
   <%= render  partial: 'reviews/review_form', locals: {review: @review, booking: @booking} %>
 </div>
