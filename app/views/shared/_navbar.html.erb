@@ -17,14 +17,14 @@
         </li>
 
 
-        <% if current_user.bookings %>
+        <% if current_user.bookings.size > 0 %>
           <li class="nav-item">
             <%= link_to "Your bookings", bookings_path, class: "nav-link" %>
           </li>
         <% end %>
 
 
-        <% if current_user.properties %>
+        <% if current_user.properties.size > 0 %>
           <li class="nav-item">
             <%= link_to "Your properties", "/users/:user_id/properties", class: "nav-link" %>
           </li>
@@ -43,7 +43,7 @@
             <%= link_to "Trips", "/users/:user_id/bookings", class: "dropdown-item" %>
             <%= link_to "Bookings", "/bookings", class: "dropdown-item" %>
 
-            <% if current_user.properties %>
+            <% if current_user.properties.size > 0 %>
               <%= link_to "Properties", "/users/:user_id/properties", class: "dropdown-item" %>
               <% else %>
               <%= link_to "Host a Home", "/properties/new", class: "dropdown-item" %>

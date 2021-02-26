@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'favourites/index'
+  get '/favourites', to: "favourites#index"
   root to: "pages#home"
   resources :properties do
     resources :bookings, only: :create
