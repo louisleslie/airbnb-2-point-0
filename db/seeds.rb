@@ -201,7 +201,7 @@ end
     random_number = (0..30).to_a.sample
     random_length = (1..14).to_a.sample
     random_property = Property.all.sample
-    booking = Booking.create(start_date: Date.today - random_number, end_date: Date.today - random_number + random_length, property_id: random_property.id, number_of_guests: (1..random_property.total_occupancy).to_a.sample, user_id:user.id)
+    booking = Booking.create(status: "Pending", start_date: Date.today - random_number, end_date: Date.today - random_number + random_length, property_id: random_property.id, number_of_guests: (1..random_property.total_occupancy).to_a.sample, user_id:user.id)
     Review.create(property_id: random_property.id, content: Faker::TvShows::RuPaul.quote, rating: (1..5).to_a.sample, booking_id: booking.id)
   end
   # Faker::TvShows::RuPaul.quote

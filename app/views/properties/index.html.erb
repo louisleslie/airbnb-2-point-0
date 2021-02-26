@@ -4,12 +4,19 @@
 
       <%= render partial: 'shared/search-form' %>
 
+      <% unless @search_success %>
+
+        <div class="card-container">
+          <p class="no-margin">No properties available, try another Location or <%= link_to "view all", properties_path, class: "pink" %></p>
+        </div>
+
+      <% else %>
+        <% @properties.each_with_index do |property, index| %>
+
+          <%= render partial: 'shared/card', locals: { property: property, index: property.id }%>
 
 
-      <% @properties.each_with_index do |property, index| %>
-
-        <%= render partial: 'shared/card', locals: { property: property, index: property.id }%>
-
+        <% end %>
       <% end %>
 
     </div>
