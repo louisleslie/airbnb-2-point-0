@@ -1,2 +1,35 @@
-<h2><%= property.name %></h2>
-<p><%= property.address %></p>
+
+
+<div class="infowindow-container">
+
+
+
+  <% if property.user == current_user %>
+    <div class="card-ribbon card-ribbon-top-left"><span>Yours</span></div>
+  <% end %>
+
+  <div class="infowindow-image-container">
+    <img src="https://source.unsplash.com/random?sig=<%= index %>/&appartment" alt="" class="infowindow-image">
+
+
+</div>
+
+
+
+
+  <div class="infowindow-content">
+    <div class="infowindow-reviews">⭐<span class="infowindow-review-count"><span class="infowindow-review-average">4.8</span> (34)</span></div>
+    <h3 class='infowindow-title'><%= property.name %></h3>
+    <p class='infowindow-subtitle'><% if property.has_kitchen %> · Kitchen   <% end %>
+
+        <% if property.has_tv %> · TV   <% end %>
+
+        <% if property.has_heating %> · Heating   <% end %>
+
+        <% if property.has_aircon %> · Air con  <% end %></p>
+      </p>
+      <a><%= link_to "View property", property_path(property), class: "infowindow-link"%></a>
+  </div>
+
+
+</div>

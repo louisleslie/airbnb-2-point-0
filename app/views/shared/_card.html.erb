@@ -1,16 +1,16 @@
 <div class="card-container">
 
   <% if property.user == current_user %>
-  <div class="card-ribbon card-ribbon-top-left"><span>Yours</span></div>
+    <div class="card-ribbon card-ribbon-top-left"><span>Yours</span></div>
   <% end %>
 
   <div class="card-image-container">
 
- <img src="https://source.unsplash.com/random?sig=<%= index %>/&appartment" alt="" class="card-image"> 
+ <img src="https://source.unsplash.com/random?sig=<%= index %>/&appartment" alt="" class="card-image">
 
     <%
 =begin%>
- <%= cl_image_tag property.photos[0].key, class:"card-image", cloud_name: "dmdajbspi" %> 
+ <%= cl_image_tag property.photos[0].key, class:"card-image", cloud_name: "dmdajbspi" %>
 <%
 =end%>
   </div>
@@ -24,7 +24,7 @@
           WIFI
         </p>
       <% end %>
-      
+
       <p class="card-supertitle"><%= property.total_bedrooms %> BED<% if property.total_bedrooms > 1 %>S<% end %> · <%= property.total_bathrooms %> BATH<% if property.total_bathrooms > 1 %>S<% end %></p>
 
       <div class="card-buttons-container">
